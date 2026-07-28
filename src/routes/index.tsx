@@ -230,7 +230,7 @@ function Hero() {
 
 function TrustBar() {
   return (
-    <section aria-label="Sportiqo at a glance" className="border-y border-border bg-deep/60 py-5">
+    <section aria-label="Sportiqo at a glance" className="border-y border-border bg-deep/60 py-5 [border-image:linear-gradient(90deg,transparent,color-mix(in_oklab,var(--amber-cta)_55%,transparent),transparent)_1]">
       <Marquee duration={38}>
         {STATS.map((s) => (
           <span
@@ -248,7 +248,7 @@ function TrustBar() {
 
 function WhySportiqo() {
   return (
-    <section className="caustics relative py-24 md:py-32">
+    <section className="caustics aurora-white relative py-24 md:py-32">
       <div className="container-x relative">
         <Reveal>
           <p className="eyebrow">Why Sportiqo</p>
@@ -372,7 +372,7 @@ function ProgramsOverview() {
 
 function LocationsSection() {
   return (
-    <section className="relative bg-deep/40 py-24 md:py-32">
+    <section className="aurora-white relative bg-deep/40 py-24 md:py-32">
       <div className="container-x">
         <Reveal>
           <p className="eyebrow">Locations</p>
@@ -427,7 +427,7 @@ function LocationsSection() {
 
 function Testimonials() {
   return (
-    <section className="py-24 md:py-32">
+    <section className="aurora-white py-24 md:py-32">
       <div className="container-x">
         <Reveal>
           <p className="eyebrow">In their words</p>
