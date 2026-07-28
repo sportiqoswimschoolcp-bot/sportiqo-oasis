@@ -9,15 +9,39 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as ProgramsRouteImport } from './routes/programs'
+import { Route as GalleryRouteImport } from './routes/gallery'
+import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as LocationsIndexRouteImport } from './routes/locations.index'
 import { Route as LocationsPrabhadeviRouteImport } from './routes/locations.prabhadevi'
 import { Route as LocationsKothrudPuneRouteImport } from './routes/locations.kothrud-pune'
 import { Route as LocationsDscRouteImport } from './routes/locations.dsc'
 import { Route as LocationsCuffeParadeRouteImport } from './routes/locations.cuffe-parade'
 
+const ProgramsRoute = ProgramsRouteImport.update({
+  id: '/programs',
+  path: '/programs',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GalleryRoute = GalleryRouteImport.update({
+  id: '/gallery',
+  path: '/gallery',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LocationsIndexRoute = LocationsIndexRouteImport.update({
+  id: '/locations/',
+  path: '/locations/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LocationsPrabhadeviRoute = LocationsPrabhadeviRouteImport.update({
@@ -43,65 +67,121 @@ const LocationsCuffeParadeRoute = LocationsCuffeParadeRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/gallery': typeof GalleryRoute
+  '/programs': typeof ProgramsRoute
   '/locations/cuffe-parade': typeof LocationsCuffeParadeRoute
   '/locations/dsc': typeof LocationsDscRoute
   '/locations/kothrud-pune': typeof LocationsKothrudPuneRoute
   '/locations/prabhadevi': typeof LocationsPrabhadeviRoute
+  '/locations/': typeof LocationsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/gallery': typeof GalleryRoute
+  '/programs': typeof ProgramsRoute
   '/locations/cuffe-parade': typeof LocationsCuffeParadeRoute
   '/locations/dsc': typeof LocationsDscRoute
   '/locations/kothrud-pune': typeof LocationsKothrudPuneRoute
   '/locations/prabhadevi': typeof LocationsPrabhadeviRoute
+  '/locations': typeof LocationsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/gallery': typeof GalleryRoute
+  '/programs': typeof ProgramsRoute
   '/locations/cuffe-parade': typeof LocationsCuffeParadeRoute
   '/locations/dsc': typeof LocationsDscRoute
   '/locations/kothrud-pune': typeof LocationsKothrudPuneRoute
   '/locations/prabhadevi': typeof LocationsPrabhadeviRoute
+  '/locations/': typeof LocationsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/about'
+    | '/gallery'
+    | '/programs'
     | '/locations/cuffe-parade'
     | '/locations/dsc'
     | '/locations/kothrud-pune'
     | '/locations/prabhadevi'
+    | '/locations/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/about'
+    | '/gallery'
+    | '/programs'
     | '/locations/cuffe-parade'
     | '/locations/dsc'
     | '/locations/kothrud-pune'
     | '/locations/prabhadevi'
+    | '/locations'
   id:
     | '__root__'
     | '/'
+    | '/about'
+    | '/gallery'
+    | '/programs'
     | '/locations/cuffe-parade'
     | '/locations/dsc'
     | '/locations/kothrud-pune'
     | '/locations/prabhadevi'
+    | '/locations/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
+  GalleryRoute: typeof GalleryRoute
+  ProgramsRoute: typeof ProgramsRoute
   LocationsCuffeParadeRoute: typeof LocationsCuffeParadeRoute
   LocationsDscRoute: typeof LocationsDscRoute
   LocationsKothrudPuneRoute: typeof LocationsKothrudPuneRoute
   LocationsPrabhadeviRoute: typeof LocationsPrabhadeviRoute
+  LocationsIndexRoute: typeof LocationsIndexRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/programs': {
+      id: '/programs'
+      path: '/programs'
+      fullPath: '/programs'
+      preLoaderRoute: typeof ProgramsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/gallery': {
+      id: '/gallery'
+      path: '/gallery'
+      fullPath: '/gallery'
+      preLoaderRoute: typeof GalleryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/locations/': {
+      id: '/locations/'
+      path: '/locations'
+      fullPath: '/locations/'
+      preLoaderRoute: typeof LocationsIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/locations/prabhadevi': {
@@ -137,10 +217,14 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
+  GalleryRoute: GalleryRoute,
+  ProgramsRoute: ProgramsRoute,
   LocationsCuffeParadeRoute: LocationsCuffeParadeRoute,
   LocationsDscRoute: LocationsDscRoute,
   LocationsKothrudPuneRoute: LocationsKothrudPuneRoute,
   LocationsPrabhadeviRoute: LocationsPrabhadeviRoute,
+  LocationsIndexRoute: LocationsIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
