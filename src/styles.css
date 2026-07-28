@@ -162,6 +162,66 @@
   color: transparent;
 }
 
+/* Apple-style soft white light bloom, layered over dark sections. */
+@utility aurora-white {
+  position: relative;
+  isolation: isolate;
+  &::before {
+    content: "";
+    position: absolute;
+    inset: -20% -10%;
+    z-index: -1;
+    pointer-events: none;
+    background:
+      radial-gradient(
+        42% 38% at 18% 12%,
+        oklch(1 0 0 / 0.14),
+        transparent 70%
+      ),
+      radial-gradient(
+        38% 34% at 82% 24%,
+        color-mix(in oklab, var(--amber-cta) 22%, transparent),
+        transparent 72%
+      ),
+      radial-gradient(
+        55% 45% at 50% 100%,
+        oklch(1 0 0 / 0.1),
+        transparent 70%
+      );
+    filter: blur(10px);
+  }
+}
+
+/* Thin luminous rule with an orange centre. */
+@utility hairline-ember {
+  height: 1px;
+  width: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    oklch(1 0 0 / 0.18) 25%,
+    color-mix(in oklab, var(--amber-cta) 70%, transparent) 50%,
+    oklch(1 0 0 / 0.18) 75%,
+    transparent
+  );
+}
+
+/* Rich frosted glass used by the floating centred nav. */
+@utility glass-nav {
+  background: linear-gradient(
+    150deg,
+    oklch(1 0 0 / 0.12),
+    oklch(1 0 0 / 0.04) 45%,
+    color-mix(in oklab, var(--abyss) 55%, transparent)
+  );
+  border: 1px solid oklch(1 0 0 / 0.14);
+  box-shadow:
+    0 1px 0 0 oklch(1 0 0 / 0.18) inset,
+    0 24px 60px -28px oklch(0.08 0.05 250 / 0.95);
+  backdrop-filter: blur(28px) saturate(180%);
+}
+
+
 @utility caustics {
   position: relative;
   &::before {
