@@ -36,7 +36,7 @@ export function PageHero({
             "linear-gradient(180deg, color-mix(in oklab, var(--abyss) 92%, transparent) 0%, color-mix(in oklab, var(--abyss) 70%, transparent) 45%, var(--abyss) 100%)",
         }}
       />
-      <div className="container-x flex min-h-[62vh] flex-col justify-end pt-32 pb-16 md:min-h-[70vh] md:pb-24">
+      <div className="aurora-white container-x flex min-h-[62vh] flex-col justify-end pt-32 pb-16 md:min-h-[70vh] md:pb-24">
         <Reveal>
           <p className="eyebrow">{eyebrow}</p>
           <h1 className="mt-4 max-w-4xl font-display text-4xl leading-[1.05] md:text-6xl">
