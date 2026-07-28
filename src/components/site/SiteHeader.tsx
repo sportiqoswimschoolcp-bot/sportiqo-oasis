@@ -97,9 +97,9 @@ export function SiteHeader() {
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-            className="overflow-hidden border-t border-border bg-background/95 backdrop-blur-xl lg:hidden"
+            className="overflow-hidden border-t border-white/10 lg:hidden"
           >
-            <nav className="container-x flex flex-col py-4" aria-label="Mobile">
+            <nav className="flex flex-col px-5 pb-4" aria-label="Mobile">
               {NAV.map((item) => (
                 <Link
                   key={item.to}
@@ -122,6 +122,8 @@ export function SiteHeader() {
           </motion.div>
         )}
       </AnimatePresence>
+      </div>
     </header>
+
   );
 }
