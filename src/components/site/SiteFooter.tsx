@@ -94,7 +94,7 @@ export function SiteFooter() {
                     </a>
                     <iframe
                       title={`Map of Sportiqo Swim School ${l.name}`}
-                      src={mapEmbed(l.mapQuery)}
+                      src={mapEmbed(l.mapQuery, l.geo)}
                       loading="lazy"
                       referrerPolicy="no-referrer-when-downgrade"
                       className="mt-2 h-20 w-full rounded-md border border-border opacity-80 grayscale-[0.3]"

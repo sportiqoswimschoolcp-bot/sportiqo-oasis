@@ -53,40 +53,42 @@
 :root {
   --radius: 0.5rem;
 
-  /* Ocean scale */
-  --abyss: oklch(0.19 0.055 251);
-  --deep: oklch(0.28 0.072 248);
-  --surf: oklch(0.38 0.083 243);
-  --aqua: oklch(0.78 0.13 213);
-  --amber-cta: oklch(0.74 0.16 58);
-  --sand: oklch(0.97 0.008 90);
+  /* Light aquatic scale — bright water, ink-navy type, orange accent. */
+  --abyss: oklch(0.99 0.004 230); /* page base (near white) */
+  --deep: oklch(0.965 0.014 226); /* soft tinted band */
+  --surf: oklch(0.9 0.045 225); /* pale blue */
+  --aqua: oklch(0.62 0.135 226); /* accent blue, readable on white */
+  --amber-cta: oklch(0.7 0.175 52);
+  --sand: oklch(0.99 0.006 90);
+  --ink: oklch(0.27 0.055 250);
 
   --background: var(--abyss);
-  --foreground: oklch(0.97 0.008 220);
-  --card: oklch(0.235 0.06 250);
-  --card-foreground: oklch(0.97 0.008 220);
-  --popover: oklch(0.235 0.06 250);
-  --popover-foreground: oklch(0.97 0.008 220);
+  --foreground: var(--ink);
+  --card: oklch(1 0 0);
+  --card-foreground: var(--ink);
+  --popover: oklch(1 0 0);
+  --popover-foreground: var(--ink);
   --primary: var(--aqua);
-  --primary-foreground: oklch(0.19 0.055 251);
-  --secondary: oklch(0.3 0.07 248);
-  --secondary-foreground: oklch(0.97 0.008 220);
-  --muted: oklch(0.28 0.06 250);
-  --muted-foreground: oklch(0.75 0.03 225);
+  --primary-foreground: oklch(1 0 0);
+  --secondary: oklch(0.94 0.02 226);
+  --secondary-foreground: var(--ink);
+  --muted: oklch(0.955 0.014 226);
+  --muted-foreground: oklch(0.5 0.035 245);
   --accent: var(--amber-cta);
-  --accent-foreground: oklch(0.19 0.055 251);
-  --destructive: oklch(0.6 0.21 25);
-  --destructive-foreground: oklch(0.98 0 0);
-  --border: oklch(1 0 0 / 12%);
-  --input: oklch(1 0 0 / 16%);
+  --accent-foreground: oklch(1 0 0);
+  --destructive: oklch(0.58 0.21 25);
+  --destructive-foreground: oklch(0.99 0 0);
+  --border: oklch(0.27 0.055 250 / 12%);
+  --input: oklch(0.27 0.055 250 / 18%);
   --ring: var(--aqua);
 
   --gradient-depth: linear-gradient(180deg, var(--abyss) 0%, var(--deep) 55%, var(--abyss) 100%);
-  --gradient-aqua: linear-gradient(120deg, var(--aqua), oklch(0.62 0.13 233));
-  --gradient-cta: linear-gradient(120deg, var(--amber-cta), oklch(0.68 0.17 42));
-  --shadow-float: 0 30px 80px -40px oklch(0.1 0.06 250 / 0.9);
-  --shadow-glow: 0 0 60px -10px color-mix(in oklab, var(--aqua) 45%, transparent);
+  --gradient-aqua: linear-gradient(120deg, var(--aqua), oklch(0.7 0.12 205));
+  --gradient-cta: linear-gradient(120deg, var(--amber-cta), oklch(0.65 0.19 38));
+  --shadow-float: 0 24px 60px -34px oklch(0.4 0.08 250 / 0.35);
+  --shadow-glow: 0 0 60px -10px color-mix(in oklab, var(--aqua) 28%, transparent);
   --ease-swim: cubic-bezier(0.22, 1, 0.36, 1);
+
 }
 
 /* The site is intentionally single-theme (deep ocean). */
@@ -147,10 +149,10 @@
 @utility surface-card {
   background: linear-gradient(
     160deg,
-    color-mix(in oklab, var(--deep) 85%, transparent),
-    color-mix(in oklab, var(--abyss) 92%, transparent)
+    oklch(1 0 0 / 0.95),
+    color-mix(in oklab, var(--deep) 92%, white)
   );
-  border: 1px solid color-mix(in oklab, var(--aqua) 16%, transparent);
+  border: 1px solid color-mix(in oklab, var(--aqua) 14%, transparent);
   box-shadow: var(--shadow-float);
   backdrop-filter: blur(10px);
 }
@@ -162,7 +164,7 @@
   color: transparent;
 }
 
-/* Apple-style soft white light bloom, layered over dark sections. */
+/* Apple-style soft light bloom: white, sky and a warm orange wash. */
 @utility aurora-white {
   position: relative;
   isolation: isolate;
@@ -175,20 +177,20 @@
     background:
       radial-gradient(
         42% 38% at 18% 12%,
-        oklch(1 0 0 / 0.14),
+        color-mix(in oklab, var(--aqua) 14%, transparent),
         transparent 70%
       ),
       radial-gradient(
         38% 34% at 82% 24%,
-        color-mix(in oklab, var(--amber-cta) 22%, transparent),
+        color-mix(in oklab, var(--amber-cta) 16%, transparent),
         transparent 72%
       ),
       radial-gradient(
         55% 45% at 50% 100%,
-        oklch(1 0 0 / 0.1),
+        oklch(1 0 0 / 0.85),
         transparent 70%
       );
-    filter: blur(10px);
+    filter: blur(14px);
   }
 }
 
@@ -199,9 +201,9 @@
   background: linear-gradient(
     90deg,
     transparent,
-    oklch(1 0 0 / 0.18) 25%,
-    color-mix(in oklab, var(--amber-cta) 70%, transparent) 50%,
-    oklch(1 0 0 / 0.18) 75%,
+    color-mix(in oklab, var(--aqua) 25%, transparent) 25%,
+    color-mix(in oklab, var(--amber-cta) 80%, transparent) 50%,
+    color-mix(in oklab, var(--aqua) 25%, transparent) 75%,
     transparent
   );
 }
@@ -210,16 +212,17 @@
 @utility glass-nav {
   background: linear-gradient(
     150deg,
-    oklch(1 0 0 / 0.12),
-    oklch(1 0 0 / 0.04) 45%,
-    color-mix(in oklab, var(--abyss) 55%, transparent)
+    oklch(1 0 0 / 0.86),
+    oklch(1 0 0 / 0.7) 45%,
+    color-mix(in oklab, var(--surf) 30%, oklch(1 0 0 / 0.72))
   );
-  border: 1px solid oklch(1 0 0 / 0.14);
+  border: 1px solid oklch(1 0 0 / 0.7);
   box-shadow:
-    0 1px 0 0 oklch(1 0 0 / 0.18) inset,
-    0 24px 60px -28px oklch(0.08 0.05 250 / 0.95);
+    0 1px 0 0 oklch(1 0 0 / 0.9) inset,
+    0 20px 50px -26px oklch(0.4 0.08 250 / 0.4);
   backdrop-filter: blur(28px) saturate(180%);
 }
+
 
 
 @utility caustics {

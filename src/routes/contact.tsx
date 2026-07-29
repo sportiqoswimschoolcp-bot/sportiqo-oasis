@@ -154,7 +154,7 @@ function Contact() {
                       WhatsApp
                     </a>
                     <a
-                      href={mapDirections(l.mapQuery)}
+                      href={mapDirections(l.mapQuery, l.geo)}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex items-center gap-2 rounded-full border border-border px-4 py-2 text-sm hover:border-primary hover:text-primary"
@@ -164,7 +164,7 @@ function Contact() {
                   </div>
                   <iframe
                     title={`Map of Sportiqo Swim School ${l.name}`}
-                    src={mapEmbed(l.mapQuery)}
+                    src={mapEmbed(l.mapQuery, l.geo)}
                     loading="lazy"
                     referrerPolicy="no-referrer-when-downgrade"
                     className="mt-4 h-40 w-full rounded-xl border border-border"

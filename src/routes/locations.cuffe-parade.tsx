@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { LocationPage } from "@/components/site/LocationPage";
 import { LOCATIONS, localBusinessSchema } from "@/lib/site-data";
-import { IMAGES } from "@/lib/images";
+import { PHOTOS } from "@/lib/images";
 
 const L = LOCATIONS[1];
 const TITLE = "Swimming Classes in Cuffe Parade, Mumbai | Sportiqo Swim School";
@@ -33,8 +33,8 @@ function Page() {
   return (
     <LocationPage
       location={L}
-      image={IMAGES.heroRooftop}
-      imageAlt="Sportiqo's floodlit rooftop swimming pool at Cuffe Parade with the South Mumbai skyline at night"
+      image={PHOTOS.cuffeNight}
+      imageAlt="Sportiqo's floodlit lane pool at Cuffe Parade, Mumbai lit turquoise in the evening"
       intro={[
         "Cuffe Parade is our flagship, and the reason is simple: it is a rooftop pool with the South Mumbai skyline on one side and the sea breeze on the other. Swimmers book the 7pm slot months in advance, and they are not doing it for the lane markings.",
         "The setting is the headline, but the coaching is the reason people stay. This is our most requested branch for adult beginners — professionals from Nariman Point and Colaba who never learned as children and would rather learn without an audience. Semi-private and fully private slots exist for exactly that reason.",

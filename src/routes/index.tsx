@@ -7,7 +7,7 @@ import { Reveal } from "@/components/site/Reveal";
 import { Marquee } from "@/components/site/Marquee";
 import { WaveDivider } from "@/components/site/WaveDivider";
 import { CtaBand } from "@/components/site/CtaBand";
-import { GALLERY, IMAGES } from "@/lib/images";
+import { GALLERY, IMAGES, PHOTOS, buildShotRows } from "@/lib/images";
 import { BRAND, LOCATIONS, PRIMARY_WA, mapEmbed, waLink } from "@/lib/site-data";
 
 const TITLE = "Sportiqo Swim School | Mumbai's Most Loved Swimming Pool";
@@ -68,8 +68,15 @@ const PROGRAMS = [
     title: "Kids",
     age: "Ages 4–14",
     body: "Water confidence to competitive-ready, in five graded levels with a progress card parents can actually read.",
-    image: IMAGES.kidUnderwater,
-    alt: "Child swimming underwater during a Sportiqo kids learn-to-swim class",
+    image: PHOTOS.kidsKickboard,
+    alt: "Two young Sportiqo swimmers working across the pool with kickboards beside their coach",
+  },
+  {
+    title: "Toddlers & Parent-Child",
+    age: "6 months – 3.5 years",
+    body: "Baby and toddler water familiarisation, with a parent in the water for the youngest swimmers. Songs, holds, floats and first submersions.",
+    image: PHOTOS.parentChild,
+    alt: "A parent holding their toddler in the pool during a Sportiqo parent-and-child class",
   },
   {
     title: "Adults",
@@ -159,7 +166,7 @@ function Hero() {
         className="absolute inset-0 -z-10"
         style={{
           background:
-            "linear-gradient(180deg, color-mix(in oklab, var(--abyss) 78%, transparent) 0%, color-mix(in oklab, var(--abyss) 40%, transparent) 40%, var(--abyss) 96%)",
+            "linear-gradient(180deg, color-mix(in oklab, var(--abyss) 55%, transparent) 0%, color-mix(in oklab, var(--abyss) 18%, transparent) 42%, var(--abyss) 96%)",
         }}
       />
 
@@ -281,10 +288,11 @@ function WhySportiqo() {
 }
 
 function ImageWall() {
+  const shotRows = buildShotRows(3, 5, GALLERY);
   const rows = [
-    { shots: GALLERY.slice(0, 5), duration: 52, reverse: false },
-    { shots: GALLERY.slice(3, 8), duration: 64, reverse: true },
-    { shots: [...GALLERY].reverse().slice(0, 5), duration: 46, reverse: false },
+    { shots: shotRows[0], duration: 52, reverse: false },
+    { shots: shotRows[1], duration: 64, reverse: true },
+    { shots: shotRows[2], duration: 46, reverse: false },
   ];
 
   return (
@@ -331,11 +339,11 @@ function ProgramsOverview() {
         <Reveal>
           <p className="eyebrow">Programs</p>
           <h2 className="mt-4 max-w-3xl font-display text-3xl leading-tight md:text-5xl">
-            Three tracks. Each one taken seriously.
+            Four tracks. Each one taken seriously.
           </h2>
         </Reveal>
 
-        <div className="mt-14 grid gap-6 md:grid-cols-3">
+        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {PROGRAMS.map((p, i) => (
             <Reveal key={p.title} delay={i * 0.1}>
               <Link
@@ -384,8 +392,8 @@ function LocationsSection() {
         <Reveal delay={0.1}>
           <div className="mt-12 overflow-hidden rounded-2xl border border-border">
             <iframe
-              title="Map showing all four Sportiqo Swim School locations across Mumbai and Pune"
-              src={mapEmbed("Swimming pool Mumbai Pune Maharashtra")}
+              title="Map pinned on Sportiqo Swim School, Cuffe Parade, Mumbai"
+              src={mapEmbed(LOCATIONS[1].mapQuery, LOCATIONS[1].geo)}
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
               className="h-[320px] w-full md:h-[420px]"

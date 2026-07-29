@@ -111,7 +111,7 @@ export function LocationPage({ location: l, image, imageAlt, intro, batches }: P
                     <Phone className="h-4 w-4" /> +91 {l.phoneDisplay}
                   </a>
                   <a
-                    href={mapDirections(l.mapQuery)}
+                    href={mapDirections(l.mapQuery, l.geo)}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center justify-center gap-2 rounded-full border border-border px-6 py-3 font-medium hover:border-primary hover:text-primary"
@@ -122,7 +122,7 @@ export function LocationPage({ location: l, image, imageAlt, intro, batches }: P
 
                 <iframe
                   title={`Map to Sportiqo Swim School ${l.name}, ${l.city}`}
-                  src={mapEmbed(l.mapQuery)}
+                  src={mapEmbed(l.mapQuery, l.geo)}
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
                   className="mt-6 h-56 w-full rounded-xl border border-border"

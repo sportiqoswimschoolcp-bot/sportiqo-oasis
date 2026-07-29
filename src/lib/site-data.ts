@@ -23,6 +23,7 @@ export type Location = {
   geo: { lat: number; lng: number };
   hours: string;
   mapQuery: string;
+  mapsUrl: string;
   highlights: string[];
   keywords: string;
 };
@@ -44,7 +45,8 @@ export const LOCATIONS: Location[] = [
     postal: "400025",
     geo: { lat: 19.0176, lng: 72.8296 },
     hours: "Mo-Su 06:00-21:00",
-    mapQuery: "Prabhadevi, Mumbai, Maharashtra 400025",
+    mapQuery: "Sportiqo Swim School, Prabhadevi, Mumbai, Maharashtra 400025",
+    mapsUrl: "https://www.google.com/maps/search/?api=1&query=Sportiqo%20Swim%20School%20Prabhadevi%20Mumbai",
     highlights: [
       "Learn-to-swim batches for ages 4+ with a 1:4 coach ratio",
       "Warm, chlorine-balanced water tested twice daily",
@@ -64,13 +66,14 @@ export const LOCATIONS: Location[] = [
     wa: "917039376559",
     headline: "Rooftop Swimming Classes in Cuffe Parade, Mumbai",
     oneLiner: "Our flagship rooftop pool, with the South Mumbai skyline as your backdrop.",
-    address: "Cuffe Parade, South Mumbai",
+    address: "Sportiqo Swim School — Cuffe Parade, Captain Prakash Pethe Marg",
     locality: "Cuffe Parade",
     region: "Maharashtra",
     postal: "400005",
-    geo: { lat: 18.9126, lng: 72.8203 },
+    geo: { lat: 18.913181, lng: 72.8209781 },
     hours: "Mo-Su 06:00-22:00",
-    mapQuery: "Cuffe Parade, Mumbai, Maharashtra 400005",
+    mapQuery: "Sportiqo Swim School - Cuffe Parade, Mumbai",
+    mapsUrl: "https://maps.app.goo.gl/NUSqMSveA9jjd3z8A",
     highlights: [
       "Rooftop pool with uninterrupted skyline and sea-facing views",
       "Floodlit evening batches — the most requested slot in South Mumbai",
@@ -96,7 +99,8 @@ export const LOCATIONS: Location[] = [
     postal: "411038",
     geo: { lat: 18.5074, lng: 73.8077 },
     hours: "Mo-Su 06:00-21:00",
-    mapQuery: "Kothrud, Pune, Maharashtra 411038",
+    mapQuery: "Sportiqo Swim School, Kothrud, Pune, Maharashtra 411038",
+    mapsUrl: "https://www.google.com/maps/search/?api=1&query=Sportiqo%20Swim%20School%20Kothrud%20Pune",
     highlights: [
       "Full-length lane pool built for stroke correction and endurance sets",
       "Squad programme feeding district and state-level meets",
@@ -122,7 +126,8 @@ export const LOCATIONS: Location[] = [
     postal: "411004",
     geo: { lat: 18.5167, lng: 73.8412 },
     hours: "Mo-Su 06:00-20:30",
-    mapQuery: "Deccan Sports Club Pune Maharashtra",
+    mapQuery: "Deccan Sports Club, Pune, Maharashtra",
+    mapsUrl: "https://www.google.com/maps/search/?api=1&query=Deccan%20Sports%20Club%20Pune",
     highlights: [
       "Club-grade facility with timing systems and starting blocks",
       "Year-round squad calendar with periodised training blocks",
@@ -139,11 +144,16 @@ export const PRIMARY_WA = LOCATIONS[1].wa;
 export const waLink = (number: string, message = "Hi Sportiqo! I'd like to book a trial swim session.") =>
   `https://wa.me/${number}?text=${encodeURIComponent(message)}`;
 
-export const mapEmbed = (query: string) =>
-  `https://www.google.com/maps?q=${encodeURIComponent(query)}&output=embed`;
+/** Embed a pinned map. Pass geo coordinates to drop the pin exactly. */
+export const mapEmbed = (query: string, geo?: { lat: number; lng: number }) =>
+  geo
+    ? `https://www.google.com/maps?q=${geo.lat},${geo.lng}(${encodeURIComponent(query)})&z=17&output=embed`
+    : `https://www.google.com/maps?q=${encodeURIComponent(query)}&output=embed`;
 
-export const mapDirections = (query: string) =>
-  `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(query)}`;
+export const mapDirections = (query: string, geo?: { lat: number; lng: number }) =>
+  geo
+    ? `https://www.google.com/maps/dir/?api=1&destination=${geo.lat},${geo.lng}`
+    : `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(query)}`;
 
 export const localBusinessSchema = (l: Location) => ({
   "@context": "https://schema.org",
@@ -160,6 +170,7 @@ export const localBusinessSchema = (l: Location) => ({
     postalCode: l.postal,
     addressCountry: "IN",
   },
+  hasMap: l.mapsUrl,
   geo: { "@type": "GeoCoordinates", latitude: l.geo.lat, longitude: l.geo.lng },
   openingHours: l.hours,
   priceRange: "₹₹₹",

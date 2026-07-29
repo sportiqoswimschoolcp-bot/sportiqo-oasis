@@ -33,7 +33,7 @@ export function PageHero({
         className="absolute inset-0 -z-10"
         style={{
           background:
-            "linear-gradient(180deg, color-mix(in oklab, var(--abyss) 92%, transparent) 0%, color-mix(in oklab, var(--abyss) 70%, transparent) 45%, var(--abyss) 100%)",
+            "linear-gradient(180deg, color-mix(in oklab, var(--abyss) 66%, transparent) 0%, color-mix(in oklab, var(--abyss) 34%, transparent) 45%, var(--abyss) 100%)",
         }}
       />
       <div className="aurora-white container-x flex min-h-[62vh] flex-col justify-end pt-32 pb-16 md:min-h-[70vh] md:pb-24">

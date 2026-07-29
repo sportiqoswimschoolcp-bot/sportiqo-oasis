@@ -79,7 +79,7 @@ function LocationsIndex() {
               <iframe
                 key={active.slug}
                 title={`Map of Sportiqo Swim School ${active.name}, ${active.city}`}
-                src={mapEmbed(active.mapQuery)}
+                src={mapEmbed(active.mapQuery, active.geo)}
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
                 className="h-[300px] w-full md:h-[420px]"
@@ -105,7 +105,7 @@ function LocationsIndex() {
                     <Phone className="h-4 w-4" /> +91 {active.phoneDisplay}
                   </a>
                   <a
-                    href={mapDirections(active.mapQuery)}
+                    href={mapDirections(active.mapQuery, active.geo)}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-2 rounded-full border border-border px-6 py-3 text-sm hover:border-primary hover:text-primary"
