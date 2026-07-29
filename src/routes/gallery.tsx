@@ -32,13 +32,13 @@ function Gallery() {
         eyebrow="Gallery"
         title="A wall of ordinary mornings."
         subtitle="No stock photography. Just our pools, our coaches and the swimmers who show up at six in the morning."
-        image={IMAGES.awards}
-        imageAlt="Young Sportiqo swimmers holding medals and trophies after a swim meet"
+        image={IMAGES.cuffeNight}
+        imageAlt="Sportiqo's floodlit lane pool at Cuffe Parade, Mumbai at night"
       />
 
       <section className="py-16 md:py-24">
         <div className="container-x columns-1 gap-5 sm:columns-2 lg:columns-3 [&>*]:mb-5">
-          {GALLERY.concat(GALLERY.slice(0, 4)).map((shot, i) => (
+          {GALLERY.map((shot, i) => (
             <Reveal key={`${shot.alt}-${i}`} delay={(i % 3) * 0.06}>
               <figure className="overflow-hidden rounded-2xl border border-border">
                 <img

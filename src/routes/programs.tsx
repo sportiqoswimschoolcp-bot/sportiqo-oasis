@@ -2,11 +2,11 @@ import { createFileRoute } from "@tanstack/react-router";
 import { PageHero } from "@/components/site/PageHero";
 import { Reveal } from "@/components/site/Reveal";
 import { CtaBand } from "@/components/site/CtaBand";
-import { IMAGES } from "@/lib/images";
+import { IMAGES, PHOTOS } from "@/lib/images";
 
-const TITLE = "Swimming Programs for Kids, Adults & Athletes | Sportiqo Swim School";
+const TITLE = "Swim Programs: Toddlers, Kids, Adults & Athletes | Sportiqo Swim School";
 const DESC =
-  "Three structured tracks: kids learn-to-swim, adult beginner and fitness swimming, and competitive squad training — all on an Australian coaching syllabus.";
+  "Five structured tracks: baby and toddler classes from 6 months, parent-and-child sessions, kids learn-to-swim, adult beginner and fitness swimming, and competitive squad training.";
 
 export const Route = createFileRoute("/programs")({
   head: () => ({
@@ -27,10 +27,38 @@ export const Route = createFileRoute("/programs")({
 
 const TRACKS = [
   {
+    title: "Toddlers",
+    age: "6 months – 3.5 years",
+    image: PHOTOS.toddlerLift,
+    alt: "A Sportiqo coach lifting a smiling toddler out of the water during a baby swim class",
+    intro:
+      "Water familiarisation for our youngest swimmers, starting from six months. Warm water, tiny groups and short sessions built around a baby's attention span — never around a syllabus. The goal is a child who is happy in water, not one who can swim a length.",
+    levels: [
+      ["Water babies · 6–14 months", "Skin-to-skin holds, gentle pours, first supported floats."],
+      ["Splashers · 14 months–2 years", "Cued submersions, back floats, pool-edge holds and turns."],
+      ["Movers · 2–3.5 years", "Assisted kicking, reach-and-grab safety skills, jumping in on cue."],
+      ["Warm-water policy", "Water held at 30–32°C, sessions capped at 30 minutes."],
+    ],
+  },
+  {
+    title: "Parent & Child",
+    age: "6 months – 4 years, in-water parent",
+    image: PHOTOS.babyClass,
+    alt: "Parents and toddlers together in the pool during a Sportiqo parent-and-child group class",
+    intro:
+      "One parent in the water, one coach on the group, and a class built on songs, routines and repetition. Parents learn the exact holds, cues and safety habits so the progress continues on family holidays — not only on Saturday mornings.",
+    levels: [
+      ["Holds & handling", "Cradle, hip and shoulder holds taught to the parent first."],
+      ["Cue-and-submerge", "A consistent verbal cue before every gentle submersion."],
+      ["Songs & routines", "Predictable structure so toddlers know exactly what comes next."],
+      ["Water safety for families", "Reach, roll, float and the rules that matter around home pools."],
+    ],
+  },
+  {
     title: "Kids",
     age: "Ages 4–14",
-    image: IMAGES.kidUnderwater,
-    alt: "A young Sportiqo swimmer gliding underwater during a kids learn-to-swim session",
+    image: PHOTOS.kidsCoach,
+    alt: "A Sportiqo coach guiding two children through a learn-to-swim drill at the pool wall",
     intro:
       "Five graded levels, from blowing bubbles to swimming a confident 100 metres. Every level ends with an assessment and a progress card, so you always know exactly where your child is.",
     levels: [
@@ -76,8 +104,8 @@ function Programs() {
     <>
       <PageHero
         eyebrow="Programs"
-        title="Three tracks. Each one taken seriously."
-        subtitle="Kids, adults and competitive athletes follow entirely separate syllabi — because a four-year-old learning to float and a fourteen-year-old chasing a state time need very different mornings."
+        title="Five tracks. Each one taken seriously."
+        subtitle="From six-month-olds in a parent's arms to squad swimmers chasing state times, every track follows its own syllabus — because a toddler learning to float and a fourteen-year-old on a taper need very different mornings."
         image={IMAGES.caustics}
         imageAlt="Sunlight caustics shimmering across clear turquoise swimming pool water"
       />

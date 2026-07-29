@@ -7,6 +7,23 @@ import awards from "@/assets/gallery-awards.jpg";
 import caustics from "@/assets/texture-caustics.jpg";
 import poolPune from "@/assets/pool-pune.jpg";
 
+import cuffeNight from "@/assets/photo-cuffe-night.jpg.asset.json";
+import kidsKickboard from "@/assets/photo-kids-kickboard.jpg.asset.json";
+import kidsCoach from "@/assets/photo-kids-coach.jpg.asset.json";
+import toddlerLift from "@/assets/photo-toddler-lift.jpg.asset.json";
+import parentChild from "@/assets/photo-parent-child.jpg.asset.json";
+import babyClass from "@/assets/photo-baby-class.jpg.asset.json";
+
+/** Real photography from our pools. */
+export const PHOTOS = {
+  cuffeNight: cuffeNight.url,
+  kidsKickboard: kidsKickboard.url,
+  kidsCoach: kidsCoach.url,
+  toddlerLift: toddlerLift.url,
+  parentChild: parentChild.url,
+  babyClass: babyClass.url,
+};
+
 export const IMAGES = {
   heroRooftop,
   kidUnderwater,
@@ -16,11 +33,41 @@ export const IMAGES = {
   awards,
   caustics,
   poolPune,
+  ...PHOTOS,
 };
 
 export type Shot = { src: string; alt: string };
 
+/** Real photographs — these lead every visual wall. */
+export const REAL_SHOTS: Shot[] = [
+  {
+    src: PHOTOS.cuffeNight,
+    alt: "Sportiqo's floodlit lane pool at Cuffe Parade, Mumbai glowing turquoise in the evening",
+  },
+  {
+    src: PHOTOS.kidsKickboard,
+    alt: "Two young Sportiqo swimmers with kickboards working across the pool beside their coach",
+  },
+  {
+    src: PHOTOS.kidsCoach,
+    alt: "A Sportiqo coach supporting two children during a learn-to-swim session by the branded pool wall",
+  },
+  {
+    src: PHOTOS.toddlerLift,
+    alt: "A Sportiqo coach lifting a toddler out of the water during a baby swim class",
+  },
+  {
+    src: PHOTOS.parentChild,
+    alt: "A father holding his toddler in the pool during a Sportiqo parent-and-child session",
+  },
+  {
+    src: PHOTOS.babyClass,
+    alt: "Parents and toddlers on the pool edge during a Sportiqo parent-child group class",
+  },
+];
+
 export const GALLERY: Shot[] = [
+  ...REAL_SHOTS,
   {
     src: heroRooftop,
     alt: "Sportiqo's floodlit rooftop swimming pool in Cuffe Parade with the Mumbai skyline behind it at night",
@@ -54,3 +101,26 @@ export const GALLERY: Shot[] = [
     alt: "Close-up of sunlight caustics shimmering across clear turquoise pool water",
   },
 ];
+
+/**
+ * Build N marquee rows where no photograph repeats within a row, and no two
+ * rows show the same photograph in the same column position.
+ */
+export function buildShotRows(rows: number, perRow: number, pool: Shot[] = GALLERY): Shot[][] {
+  const n = pool.length;
+  return Array.from({ length: rows }, (_, r) =>
+    Array.from({ length: perRow }, (_, c) => pool[(r * 5 + c * 3 + r * c) % n]),
+  ).map((row) =>
+    // de-duplicate inside the row by nudging collisions forward
+    row.reduce<Shot[]>((acc, shot) => {
+      let candidate = shot;
+      let guard = 0;
+      while (acc.includes(candidate) && guard < n) {
+        candidate = pool[(pool.indexOf(candidate) + 1) % n];
+        guard += 1;
+      }
+      acc.push(candidate);
+      return acc;
+    }, []),
+  );
+}
