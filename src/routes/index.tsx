@@ -166,7 +166,7 @@ function Hero() {
         className="absolute inset-0 -z-10"
         style={{
           background:
-            "linear-gradient(180deg, color-mix(in oklab, var(--abyss) 78%, transparent) 0%, color-mix(in oklab, var(--abyss) 40%, transparent) 40%, var(--abyss) 96%)",
+            "linear-gradient(180deg, color-mix(in oklab, var(--abyss) 55%, transparent) 0%, color-mix(in oklab, var(--abyss) 18%, transparent) 42%, var(--abyss) 96%)",
         }}
       />
 
