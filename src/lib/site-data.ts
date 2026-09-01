@@ -139,7 +139,13 @@ export const LOCATIONS: Location[] = [
   },
 ];
 
-export const PRIMARY_WA = LOCATIONS[1].wa;
+/** General enquiry line — used everywhere that is not branch-specific. */
+export const GENERAL_PHONE = "918452917393";
+export const GENERAL_PHONE_DISPLAY = "84529 17393";
+export const GENERAL_WA = GENERAL_PHONE;
+export const INSTAGRAM_URL = "https://www.instagram.com/sportiqo.in/";
+
+export const PRIMARY_WA = GENERAL_WA;
 
 export const waLink = (number: string, message = "Hi Sportiqo! I'd like to book a trial swim session.") =>
   `https://wa.me/${number}?text=${encodeURIComponent(message)}`;

@@ -13,9 +13,11 @@ import kidsCoach from "@/assets/photo-kids-coach.jpg.asset.json";
 import toddlerLift from "@/assets/photo-toddler-lift.jpg.asset.json";
 import parentChild from "@/assets/photo-parent-child.jpg.asset.json";
 import babyClass from "@/assets/photo-baby-class.jpg.asset.json";
+import prabhadeviPool from "@/assets/photo-prabhadevi-pool.jpg.asset.json";
 
 /** Real photography from our pools. */
 export const PHOTOS = {
+  prabhadeviPool: prabhadeviPool.url,
   cuffeNight: cuffeNight.url,
   kidsKickboard: kidsKickboard.url,
   kidsCoach: kidsCoach.url,
@@ -40,6 +42,10 @@ export type Shot = { src: string; alt: string };
 
 /** Real photographs — these lead every visual wall. */
 export const REAL_SHOTS: Shot[] = [
+  {
+    src: PHOTOS.prabhadeviPool,
+    alt: "Sportiqo's covered eight-lane swimming pool at Prabhadevi, Mumbai with starting blocks and clear blue water",
+  },
   {
     src: PHOTOS.cuffeNight,
     alt: "Sportiqo's floodlit lane pool at Cuffe Parade, Mumbai glowing turquoise in the evening",
