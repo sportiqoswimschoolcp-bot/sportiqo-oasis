@@ -1,7 +1,17 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "motion/react";
-import { ShieldCheck, Waves, Users, Sparkles, Phone, MapPin, Quote } from "lucide-react";
+import {
+  ShieldCheck,
+  Waves,
+  Users,
+  Sparkles,
+  Phone,
+  MapPin,
+  Quote,
+  HelpCircle,
+} from "lucide-react";
+
 
 import { Reveal } from "@/components/site/Reveal";
 import { Marquee } from "@/components/site/Marquee";
