@@ -28,52 +28,33 @@ export function SiteFooter() {
               swim with us.
             </p>
 
-            <form
-              className="mt-7 max-w-sm"
-              onSubmit={(e) => {
-                e.preventDefault();
-                const form = e.currentTarget;
-                form.reset();
-                alert("Thanks — you're on the list. We'll share batch openings first.");
-              }}
-            >
-              <label htmlFor="newsletter" className="eyebrow">
-                Batch openings first
-              </label>
-              <div className="mt-3 flex gap-2">
-                <input
-                  id="newsletter"
-                  type="email"
-                  required
-                  placeholder="you@email.com"
-                  className="min-w-0 flex-1 rounded-full border border-input bg-background/50 px-4 py-2.5 text-sm outline-none focus:border-primary"
-                />
-                <button
-                  type="submit"
-                  className="shrink-0 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground"
-                >
-                  Join
-                </button>
-              </div>
-            </form>
+            <div className="mt-7 flex flex-wrap gap-3">
+              <a
+                href={`tel:+${GENERAL_PHONE}`}
+                className="flex items-center gap-2 rounded-full border border-border px-5 py-2.5 text-sm font-semibold hover:border-primary hover:text-primary"
+              >
+                <Phone className="h-4 w-4" /> +91 {GENERAL_PHONE_DISPLAY}
+              </a>
+              <a
+                href={waLink(GENERAL_WA)}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-full bg-[#25D366] px-5 py-2.5 text-sm font-semibold text-[#062b17]"
+              >
+                WhatsApp us
+              </a>
+            </div>
 
             <div className="mt-7 flex gap-3">
-              {[
-                { Icon: Instagram, href: "https://instagram.com", label: "Instagram" },
-                { Icon: Facebook, href: "https://facebook.com", label: "Facebook" },
-                { Icon: Youtube, href: "https://youtube.com", label: "YouTube" },
-              ].map(({ Icon, href, label }) => (
-                <a
-                  key={label}
-                  href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={`Sportiqo Swim School on ${label}`}
-                  className="flex h-10 w-10 items-center justify-center rounded-full border border-border text-muted-foreground transition-colors hover:border-primary hover:text-primary"
-                >
-                  <Icon className="h-4 w-4" />
-                </a>
-              ))}
+              <a
+                href={INSTAGRAM_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Sportiqo Swim School on Instagram"
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-border text-muted-foreground transition-colors hover:border-primary hover:text-primary"
+              >
+                <Instagram className="h-4 w-4" />
+              </a>
             </div>
           </div>
 
