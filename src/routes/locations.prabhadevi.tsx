@@ -33,8 +33,8 @@ function Page() {
   return (
     <LocationPage
       location={L}
-      image={IMAGES.coachKids}
-      imageAlt="A Sportiqo coach teaching a small group of children at the Prabhadevi swimming pool in Mumbai"
+      image={IMAGES.prabhadeviPool}
+      imageAlt="Sportiqo's covered eight-lane swimming pool at Prabhadevi, Mumbai with starting blocks and clear blue water"
       intro={[
         "Prabhadevi is where Sportiqo started, and it still sets the tone for every other pool we run. It is a working central-Mumbai neighbourhood pool: no queues at the deck, no oversized batches, and a coach who knows every swimmer's name by the second week.",
         "Because we sit between Dadar, Worli, Lower Parel and Mahim, most families reach us in under fifteen minutes. That matters more than it sounds — swimming only improves with frequency, and the pool you can actually get to is the pool your child will improve in.",
