@@ -379,6 +379,15 @@ function ProgramsOverview() {
 }
 
 function LocationsSection() {
+  const [active, setActive] = useState(1);
+  const mapRef = useRef<HTMLDivElement>(null);
+  const L = LOCATIONS[active];
+
+  const select = (i: number) => {
+    setActive(i);
+    mapRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+  };
+
   return (
     <section className="aurora-white relative bg-deep/40 py-24 md:py-32">
       <div className="container-x">
@@ -390,43 +399,97 @@ function LocationsSection() {
         </Reveal>
 
         <Reveal delay={0.1}>
-          <div className="mt-12 overflow-hidden rounded-2xl border border-border">
+          <div
+            ref={mapRef}
+            className="mt-12 overflow-hidden rounded-2xl border border-border scroll-mt-28"
+          >
             <iframe
-              title="Map pinned on Sportiqo Swim School, Cuffe Parade, Mumbai"
-              src={mapEmbed(LOCATIONS[1].mapQuery, LOCATIONS[1].geo)}
+              key={L.slug}
+              title={`Map pinned on Sportiqo Swim School, ${L.name}, ${L.city}`}
+              src={mapEmbed(L.mapQuery, L.geo)}
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
               className="h-[320px] w-full md:h-[420px]"
             />
           </div>
+          <p className="mt-3 text-sm text-muted-foreground">
+            Showing <span className="font-semibold text-foreground">{L.name}, {L.city}</span> — tap
+            any pool below to move the pin.
+          </p>
         </Reveal>
 
-        <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {LOCATIONS.map((l, i) => (
-            <Reveal key={l.slug} delay={i * 0.07}>
-              <article className="surface-card flex h-full flex-col rounded-2xl p-6">
-                <MapPin className="h-5 w-5 text-primary" aria-hidden="true" />
-                <h3 className="mt-4 font-display text-xl">
-                  {l.name}, {l.city}
-                </h3>
-                <p className="mt-2 flex-1 text-sm leading-relaxed text-muted-foreground">
-                  {l.oneLiner}
-                </p>
-                <a
-                  href={`tel:+${l.phone}`}
-                  className="mt-4 flex items-center gap-2 text-sm text-foreground hover:text-primary"
+        <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+          {LOCATIONS.map((l, i) => {
+            const isActive = i === active;
+            return (
+              <Reveal key={l.slug} delay={i * 0.07}>
+                <article
+                  onClick={() => select(i)}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter" || e.key === " ") {
+                      e.preventDefault();
+                      select(i);
+                    }
+                  }}
+                  role="button"
+                  tabIndex={0}
+                  aria-pressed={isActive}
+                  className={`surface-card flex h-full cursor-pointer flex-col rounded-2xl p-6 transition-[transform,box-shadow,border-color] duration-500 ease-[var(--ease-swim)] hover:-translate-y-2 hover:shadow-[var(--shadow-float)] ${
+                    isActive
+                      ? "-translate-y-2 border-primary shadow-[var(--shadow-float)]"
+                      : "translate-y-0"
+                  }`}
                 >
-                  <Phone className="h-3.5 w-3.5 shrink-0" /> +91 {l.phoneDisplay}
-                </a>
-                <Link
-                  to={l.path}
-                  className="mt-5 rounded-full border border-border px-4 py-2.5 text-center text-sm font-medium transition-colors hover:border-primary hover:text-primary"
-                >
-                  View Location
-                </Link>
-              </article>
-            </Reveal>
-          ))}
+                  <MapPin className="h-5 w-5 text-primary" aria-hidden="true" />
+                  <h3 className="mt-4 font-display text-xl">
+                    {l.name}, {l.city}
+                  </h3>
+                  <p className="mt-2 flex-1 text-sm leading-relaxed text-muted-foreground">
+                    {l.oneLiner}
+                  </p>
+                  <a
+                    href={`tel:+${l.phone}`}
+                    onClick={(e) => e.stopPropagation()}
+                    className="mt-4 flex items-center gap-2 text-sm text-foreground hover:text-primary"
+                  >
+                    <Phone className="h-3.5 w-3.5 shrink-0" /> +91 {l.phoneDisplay}
+                  </a>
+                  <Link
+                    to={l.path}
+                    onClick={(e) => e.stopPropagation()}
+                    className="mt-5 rounded-full border border-border px-4 py-2.5 text-center text-sm font-medium transition-colors hover:border-primary hover:text-primary"
+                  >
+                    View Location
+                  </Link>
+                </article>
+              </Reveal>
+            );
+          })}
+
+          <Reveal delay={LOCATIONS.length * 0.07}>
+            <article className="relative flex h-full flex-col overflow-hidden rounded-2xl border border-dashed border-primary/40 bg-[color-mix(in_oklab,var(--primary)_6%,transparent)] p-6 transition-transform duration-500 ease-[var(--ease-swim)] hover:-translate-y-2">
+              <span
+                aria-hidden="true"
+                className="pointer-events-none absolute -top-10 -right-10 font-display text-[9rem] leading-none text-primary/10 select-none"
+              >
+                ?
+              </span>
+              <HelpCircle className="h-5 w-5 text-accent" aria-hidden="true" />
+              <h3 className="mt-4 font-display text-xl">New pools, coming soon</h3>
+              <p className="mt-2 flex-1 text-sm leading-relaxed text-muted-foreground">
+                Two more Sportiqo waters are being readied across Mumbai and Pune. Locations still
+                under wraps — WhatsApp us to hear first when the pins drop.
+              </p>
+              <a
+                href={waLink(PRIMARY_WA)}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-5 rounded-full bg-[image:var(--gradient-cta)] px-4 py-2.5 text-center text-sm font-semibold text-accent-foreground"
+              >
+                Notify me
+              </a>
+            </article>
+          </Reveal>
         </div>
       </div>
     </section>
@@ -434,32 +497,80 @@ function LocationsSection() {
 }
 
 function Testimonials() {
+  const [active, setActive] = useState(0);
+  const t = TESTIMONIALS[active];
+
   return (
     <section className="aurora-white py-24 md:py-32">
       <div className="container-x">
         <Reveal>
           <p className="eyebrow">In their words</p>
+          <h2 className="mt-4 max-w-2xl font-display text-3xl leading-tight md:text-5xl">
+            Families who stayed.
+          </h2>
         </Reveal>
-        <div className="mt-12 grid gap-6 lg:grid-cols-3">
-          {TESTIMONIALS.map((t, i) => (
-            <Reveal key={t.name} delay={i * 0.12}>
-              <figure className="surface-card h-full rounded-2xl p-8">
-                <Quote className="h-8 w-8 text-primary/70" aria-hidden="true" />
-                <blockquote className="mt-5 font-display text-lg leading-relaxed italic md:text-xl">
-                  “{t.quote}”
-                </blockquote>
-                <figcaption className="mt-6 text-sm">
-                  <span className="font-semibold">{t.name}</span>
-                  <span className="block text-muted-foreground">{t.detail}</span>
-                </figcaption>
-              </figure>
-            </Reveal>
-          ))}
+
+        <div className="mt-12 grid gap-10 lg:grid-cols-[1.25fr_1fr]">
+          <Reveal>
+            <figure className="surface-card relative h-full overflow-hidden rounded-3xl p-8 md:p-12">
+              <span
+                aria-hidden="true"
+                className="pointer-events-none absolute -top-14 right-2 font-display text-[12rem] leading-none text-primary/10 select-none"
+              >
+                “
+              </span>
+              <Quote className="h-7 w-7 text-primary/70" aria-hidden="true" />
+              <motion.blockquote
+                key={t.name}
+                initial={{ opacity: 0, y: 14 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+                className="mt-6 font-display text-xl leading-relaxed md:text-3xl"
+              >
+                {t.quote}
+              </motion.blockquote>
+              <figcaption className="mt-8 flex items-center gap-4 border-t border-border pt-6">
+                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[image:var(--gradient-cta)] font-display text-base text-accent-foreground">
+                  {t.name.charAt(0)}
+                </span>
+                <span className="min-w-0">
+                  <span className="block truncate font-semibold">{t.name}</span>
+                  <span className="block truncate text-sm text-muted-foreground">{t.detail}</span>
+                </span>
+                <span className="ml-auto shrink-0 text-sm tracking-[0.3em] text-accent">★★★★★</span>
+              </figcaption>
+            </figure>
+          </Reveal>
+
+          <Reveal delay={0.1}>
+            <ul className="flex h-full flex-col gap-2">
+              {TESTIMONIALS.map((item, i) => (
+                <li key={item.name}>
+                  <button
+                    type="button"
+                    onClick={() => setActive(i)}
+                    aria-pressed={i === active}
+                    className={`w-full rounded-2xl border px-5 py-4 text-left transition-all duration-400 ease-[var(--ease-swim)] ${
+                      i === active
+                        ? "translate-x-1 border-primary bg-[color-mix(in_oklab,var(--primary)_8%,transparent)]"
+                        : "border-border hover:translate-x-1 hover:border-primary/50"
+                    }`}
+                  >
+                    <span className="block text-sm font-semibold">{item.name}</span>
+                    <span className="block truncate text-xs text-muted-foreground">
+                      {item.detail}
+                    </span>
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </Reveal>
         </div>
       </div>
     </section>
   );
 }
+
 
 function Credentials() {
   return (
