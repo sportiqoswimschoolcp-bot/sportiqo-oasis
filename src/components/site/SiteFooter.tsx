@@ -1,7 +1,16 @@
 import { Link } from "@tanstack/react-router";
-import { Instagram, Facebook, Youtube, Phone, Mail } from "lucide-react";
+import { Instagram, Phone } from "lucide-react";
 import logo from "@/assets/sportiqo-logo.png.asset.json";
-import { BRAND, LOCATIONS, mapEmbed } from "@/lib/site-data";
+import {
+  BRAND,
+  LOCATIONS,
+  GENERAL_PHONE,
+  GENERAL_PHONE_DISPLAY,
+  GENERAL_WA,
+  INSTAGRAM_URL,
+  mapEmbed,
+  waLink,
+} from "@/lib/site-data";
 import { WaveDivider } from "./WaveDivider";
 
 export function SiteFooter() {
@@ -102,12 +111,6 @@ export function SiteFooter() {
                   </li>
                 ))}
               </ul>
-              <a
-                href="mailto:hello@sportiqoswimschool.com"
-                className="mt-6 flex items-center gap-2 text-sm text-muted-foreground hover:text-primary"
-              >
-                <Mail className="h-4 w-4 shrink-0" /> hello@sportiqoswimschool.com
-              </a>
             </div>
           </div>
         </div>
