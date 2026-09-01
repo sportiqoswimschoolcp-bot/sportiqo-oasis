@@ -43,6 +43,10 @@ export type Shot = { src: string; alt: string };
 /** Real photographs — these lead every visual wall. */
 export const REAL_SHOTS: Shot[] = [
   {
+    src: PHOTOS.prabhadeviPool,
+    alt: "Sportiqo's covered eight-lane swimming pool at Prabhadevi, Mumbai with starting blocks and clear blue water",
+  },
+  {
     src: PHOTOS.cuffeNight,
     alt: "Sportiqo's floodlit lane pool at Cuffe Parade, Mumbai glowing turquoise in the evening",
   },
