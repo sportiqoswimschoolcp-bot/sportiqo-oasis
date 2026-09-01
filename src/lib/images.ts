@@ -13,9 +13,11 @@ import kidsCoach from "@/assets/photo-kids-coach.jpg.asset.json";
 import toddlerLift from "@/assets/photo-toddler-lift.jpg.asset.json";
 import parentChild from "@/assets/photo-parent-child.jpg.asset.json";
 import babyClass from "@/assets/photo-baby-class.jpg.asset.json";
+import prabhadeviPool from "@/assets/photo-prabhadevi-pool.jpg.asset.json";
 
 /** Real photography from our pools. */
 export const PHOTOS = {
+  prabhadeviPool: prabhadeviPool.url,
   cuffeNight: cuffeNight.url,
   kidsKickboard: kidsKickboard.url,
   kidsCoach: kidsCoach.url,
