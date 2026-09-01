@@ -123,7 +123,32 @@ const TESTIMONIALS = [
     name: "Shweta K.",
     detail: "Parent · Kothrud, Pune",
   },
+  {
+    quote:
+      "We started the parent-and-child batch when our son was eleven months old. He now floats on his back and giggles through it. The coaches are unbelievably patient with babies.",
+    name: "Farhan & Zoya S.",
+    detail: "Parent-child batch · Prabhadevi",
+  },
+  {
+    quote:
+      "I had a genuine fear of deep water for thirty years. Nobody made me feel silly about it. Six weeks in, I swam a full length without stopping.",
+    name: "Meghana R.",
+    detail: "Adult beginner · Deccan Sports Club",
+  },
+  {
+    quote:
+      "What sold us was the ratio. Four kids to a coach means someone is actually watching your child every single minute — you can see it from the deck.",
+    name: "Arjun T.",
+    detail: "Parent · Cuffe Parade",
+  },
+  {
+    quote:
+      "The water is clean, the deck is safe and the batches start on time. As a working parent, that reliability is worth as much as the coaching.",
+    name: "Priya N.",
+    detail: "Parent · Kothrud, Pune",
+  },
 ];
+
 
 const CREDENTIALS = [
   "Australian Learn-To-Swim Certified Coaches",
