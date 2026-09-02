@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useRef, useState } from "react";
-import { motion, useScroll, useTransform } from "motion/react";
+import { useEffect, useRef, useState } from "react";
+import { AnimatePresence, motion, useScroll, useTransform } from "motion/react";
 import {
   ShieldCheck,
   Waves,
@@ -9,8 +9,10 @@ import {
   Phone,
   MapPin,
   Quote,
-  HelpCircle,
+  ChevronLeft,
+  ChevronRight,
 } from "lucide-react";
+
 
 
 import { Reveal } from "@/components/site/Reveal";
