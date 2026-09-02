@@ -36,7 +36,7 @@ function LocationsIndex() {
       <PageHero
         eyebrow="Four pools, one standard"
         title="Find your Sportiqo pool"
-        subtitle="Two in Mumbai, two in Pune. Each with its own coaching desk, its own batch calendar, and its own character."
+        subtitle="Three in Mumbai, one in Pune. Each with its own coaching desk, its own batch calendar, and its own character."
         image={IMAGES.poolPune}
         imageAlt="Sportiqo's outdoor lane swimming pool with palm trees at golden hour"
       />
