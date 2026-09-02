@@ -133,7 +133,7 @@ const TESTIMONIALS = [
     quote:
       "I had a genuine fear of deep water for thirty years. Nobody made me feel silly about it. Six weeks in, I swam a full length without stopping.",
     name: "Meghana R.",
-    detail: "Adult beginner · Deccan Sports Club",
+    detail: "Adult beginner · District Sports Club, BKC",
   },
   {
     quote:

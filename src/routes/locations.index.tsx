@@ -9,7 +9,7 @@ import { IMAGES } from "@/lib/images";
 
 const TITLE = "Our Swimming Pools in Mumbai & Pune | Sportiqo Swim School";
 const DESC =
-  "Four Sportiqo pools: Prabhadevi and Cuffe Parade in Mumbai, Kothrud and DSC in Pune. Find batch timings, phone numbers and directions for each branch.";
+  "Four Sportiqo pools: Prabhadevi and Cuffe Parade in Mumbai, Kothrud in Pune and District Sports Club in BKC. Find batch timings, phone numbers and directions for each branch.";
 
 export const Route = createFileRoute("/locations/")({
   head: () => ({

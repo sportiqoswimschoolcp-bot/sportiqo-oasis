@@ -20,7 +20,7 @@ export const Route = createFileRoute("/sitemap.xml")({
           { path: "/locations/prabhadevi", changefreq: "monthly", priority: "0.9" },
           { path: "/locations/cuffe-parade", changefreq: "monthly", priority: "0.9" },
           { path: "/locations/kothrud-pune", changefreq: "monthly", priority: "0.9" },
-          { path: "/locations/dsc", changefreq: "monthly", priority: "0.9" },
+          { path: "/locations/bkc", changefreq: "monthly", priority: "0.9" },
           { path: "/programs", changefreq: "monthly", priority: "0.8" },
           { path: "/about", changefreq: "yearly", priority: "0.6" },
           { path: "/gallery", changefreq: "monthly", priority: "0.5" },

@@ -18,8 +18,8 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as LocationsIndexRouteImport } from './routes/locations.index'
 import { Route as LocationsPrabhadeviRouteImport } from './routes/locations.prabhadevi'
 import { Route as LocationsKothrudPuneRouteImport } from './routes/locations.kothrud-pune'
-import { Route as LocationsDscRouteImport } from './routes/locations.dsc'
 import { Route as LocationsCuffeParadeRouteImport } from './routes/locations.cuffe-parade'
+import { Route as LocationsBkcRouteImport } from './routes/locations.bkc'
 
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
@@ -66,14 +66,14 @@ const LocationsKothrudPuneRoute = LocationsKothrudPuneRouteImport.update({
   path: '/locations/kothrud-pune',
   getParentRoute: () => rootRouteImport,
 } as any)
-const LocationsDscRoute = LocationsDscRouteImport.update({
-  id: '/locations/dsc',
-  path: '/locations/dsc',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const LocationsCuffeParadeRoute = LocationsCuffeParadeRouteImport.update({
   id: '/locations/cuffe-parade',
   path: '/locations/cuffe-parade',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LocationsBkcRoute = LocationsBkcRouteImport.update({
+  id: '/locations/bkc',
+  path: '/locations/bkc',
   getParentRoute: () => rootRouteImport,
 } as any)
 
@@ -84,8 +84,8 @@ export interface FileRoutesByFullPath {
   '/gallery': typeof GalleryRoute
   '/programs': typeof ProgramsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/locations/bkc': typeof LocationsBkcRoute
   '/locations/cuffe-parade': typeof LocationsCuffeParadeRoute
-  '/locations/dsc': typeof LocationsDscRoute
   '/locations/kothrud-pune': typeof LocationsKothrudPuneRoute
   '/locations/prabhadevi': typeof LocationsPrabhadeviRoute
   '/locations/': typeof LocationsIndexRoute
@@ -97,8 +97,8 @@ export interface FileRoutesByTo {
   '/gallery': typeof GalleryRoute
   '/programs': typeof ProgramsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/locations/bkc': typeof LocationsBkcRoute
   '/locations/cuffe-parade': typeof LocationsCuffeParadeRoute
-  '/locations/dsc': typeof LocationsDscRoute
   '/locations/kothrud-pune': typeof LocationsKothrudPuneRoute
   '/locations/prabhadevi': typeof LocationsPrabhadeviRoute
   '/locations': typeof LocationsIndexRoute
@@ -111,8 +111,8 @@ export interface FileRoutesById {
   '/gallery': typeof GalleryRoute
   '/programs': typeof ProgramsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/locations/bkc': typeof LocationsBkcRoute
   '/locations/cuffe-parade': typeof LocationsCuffeParadeRoute
-  '/locations/dsc': typeof LocationsDscRoute
   '/locations/kothrud-pune': typeof LocationsKothrudPuneRoute
   '/locations/prabhadevi': typeof LocationsPrabhadeviRoute
   '/locations/': typeof LocationsIndexRoute
@@ -126,8 +126,8 @@ export interface FileRouteTypes {
     | '/gallery'
     | '/programs'
     | '/sitemap.xml'
+    | '/locations/bkc'
     | '/locations/cuffe-parade'
-    | '/locations/dsc'
     | '/locations/kothrud-pune'
     | '/locations/prabhadevi'
     | '/locations/'
@@ -139,8 +139,8 @@ export interface FileRouteTypes {
     | '/gallery'
     | '/programs'
     | '/sitemap.xml'
+    | '/locations/bkc'
     | '/locations/cuffe-parade'
-    | '/locations/dsc'
     | '/locations/kothrud-pune'
     | '/locations/prabhadevi'
     | '/locations'
@@ -152,8 +152,8 @@ export interface FileRouteTypes {
     | '/gallery'
     | '/programs'
     | '/sitemap.xml'
+    | '/locations/bkc'
     | '/locations/cuffe-parade'
-    | '/locations/dsc'
     | '/locations/kothrud-pune'
     | '/locations/prabhadevi'
     | '/locations/'
@@ -166,8 +166,8 @@ export interface RootRouteChildren {
   GalleryRoute: typeof GalleryRoute
   ProgramsRoute: typeof ProgramsRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  LocationsBkcRoute: typeof LocationsBkcRoute
   LocationsCuffeParadeRoute: typeof LocationsCuffeParadeRoute
-  LocationsDscRoute: typeof LocationsDscRoute
   LocationsKothrudPuneRoute: typeof LocationsKothrudPuneRoute
   LocationsPrabhadeviRoute: typeof LocationsPrabhadeviRoute
   LocationsIndexRoute: typeof LocationsIndexRoute
@@ -238,18 +238,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LocationsKothrudPuneRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/locations/dsc': {
-      id: '/locations/dsc'
-      path: '/locations/dsc'
-      fullPath: '/locations/dsc'
-      preLoaderRoute: typeof LocationsDscRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/locations/cuffe-parade': {
       id: '/locations/cuffe-parade'
       path: '/locations/cuffe-parade'
       fullPath: '/locations/cuffe-parade'
       preLoaderRoute: typeof LocationsCuffeParadeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/locations/bkc': {
+      id: '/locations/bkc'
+      path: '/locations/bkc'
+      fullPath: '/locations/bkc'
+      preLoaderRoute: typeof LocationsBkcRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -262,8 +262,8 @@ const rootRouteChildren: RootRouteChildren = {
   GalleryRoute: GalleryRoute,
   ProgramsRoute: ProgramsRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
+  LocationsBkcRoute: LocationsBkcRoute,
   LocationsCuffeParadeRoute: LocationsCuffeParadeRoute,
-  LocationsDscRoute: LocationsDscRoute,
   LocationsKothrudPuneRoute: LocationsKothrudPuneRoute,
   LocationsPrabhadeviRoute: LocationsPrabhadeviRoute,
   LocationsIndexRoute: LocationsIndexRoute,

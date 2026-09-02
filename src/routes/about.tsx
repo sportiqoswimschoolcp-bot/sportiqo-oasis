@@ -67,7 +67,7 @@ function About() {
             <p className="mt-5 leading-relaxed text-muted-foreground">
               We adopted that progression wholesale and refused to shortcut it, even when parents
               asked us to. It is why a Sportiqo swimmer's freestyle looks the same at Prabhadevi as
-              it does at DSC, and why our squad athletes arrive at competitive training without
+              it does at BKC, and why our squad athletes arrive at competitive training without
               habits that need unlearning.
             </p>
             <p className="mt-5 leading-relaxed text-muted-foreground">
