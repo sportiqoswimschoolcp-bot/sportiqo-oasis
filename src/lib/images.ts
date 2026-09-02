@@ -14,10 +14,24 @@ import toddlerLift from "@/assets/photo-toddler-lift.jpg.asset.json";
 import parentChild from "@/assets/photo-parent-child.jpg.asset.json";
 import babyClass from "@/assets/photo-baby-class.jpg.asset.json";
 import prabhadeviPool from "@/assets/photo-prabhadevi-pool.jpg.asset.json";
+import prabhadeviDeck from "@/assets/prabhadevi-deck-1.jpg.asset.json";
+import prabhadeviSquad from "@/assets/prabhadevi-squad.jpg.asset.json";
+import prabhadeviLanes from "@/assets/prabhadevi-lanes.jpg.asset.json";
+import prabhadeviMorning from "@/assets/prabhadevi-morning.jpg.asset.json";
+import prabhadeviCoaches from "@/assets/prabhadevi-coaches.jpg.asset.json";
+import bkcGroupNight from "@/assets/bkc-group-night.jpg.asset.json";
+import bkcBackfloat from "@/assets/bkc-backfloat.jpg.asset.json";
 
 /** Real photography from our pools. */
 export const PHOTOS = {
   prabhadeviPool: prabhadeviPool.url,
+  prabhadeviDeck: prabhadeviDeck.url,
+  prabhadeviSquad: prabhadeviSquad.url,
+  prabhadeviLanes: prabhadeviLanes.url,
+  prabhadeviMorning: prabhadeviMorning.url,
+  prabhadeviCoaches: prabhadeviCoaches.url,
+  bkcGroupNight: bkcGroupNight.url,
+  bkcBackfloat: bkcBackfloat.url,
   cuffeNight: cuffeNight.url,
   kidsKickboard: kidsKickboard.url,
   kidsCoach: kidsCoach.url,
@@ -25,6 +39,7 @@ export const PHOTOS = {
   parentChild: parentChild.url,
   babyClass: babyClass.url,
 };
+
 
 export const IMAGES = {
   heroRooftop,
