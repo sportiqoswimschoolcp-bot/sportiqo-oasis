@@ -15,7 +15,7 @@ import { IMAGES } from "@/lib/images";
 
 const TITLE = "Contact Sportiqo Swim School | Mumbai & Pune Swimming Classes";
 const DESC =
-  "Call, WhatsApp or message Sportiqo Swim School. Direct numbers and maps for Prabhadevi, Cuffe Parade, Kothrud Pune and DSC.";
+  "Call, WhatsApp or message Sportiqo Swim School. Direct numbers and maps for Prabhadevi, Cuffe Parade, Kothrud Pune and BKC.";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({

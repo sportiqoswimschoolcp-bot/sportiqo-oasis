@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useRef, useState } from "react";
-import { motion, useScroll, useTransform } from "motion/react";
+import { useEffect, useRef, useState } from "react";
+import { AnimatePresence, motion, useScroll, useTransform } from "motion/react";
 import {
   ShieldCheck,
   Waves,
@@ -9,8 +9,10 @@ import {
   Phone,
   MapPin,
   Quote,
-  HelpCircle,
+  ChevronLeft,
+  ChevronRight,
 } from "lucide-react";
+
 
 
 import { Reveal } from "@/components/site/Reveal";
@@ -133,7 +135,7 @@ const TESTIMONIALS = [
     quote:
       "I had a genuine fear of deep water for thirty years. Nobody made me feel silly about it. Six weeks in, I swam a full length without stopping.",
     name: "Meghana R.",
-    detail: "Adult beginner · Deccan Sports Club",
+    detail: "Adult beginner · District Sports Club, BKC",
   },
   {
     quote:
@@ -501,30 +503,22 @@ function LocationsSection() {
             );
           })}
 
-          <Reveal delay={LOCATIONS.length * 0.07}>
-            <article className="relative flex h-full flex-col overflow-hidden rounded-2xl border border-dashed border-primary/40 bg-[color-mix(in_oklab,var(--primary)_6%,transparent)] p-6 transition-transform duration-500 ease-[var(--ease-swim)] hover:-translate-y-2">
-              <span
-                aria-hidden="true"
-                className="pointer-events-none absolute -top-10 -right-10 font-display text-[9rem] leading-none text-primary/10 select-none"
-              >
-                ?
-              </span>
-              <HelpCircle className="h-5 w-5 text-accent" aria-hidden="true" />
-              <h3 className="mt-4 font-display text-xl">New pools, coming soon</h3>
-              <p className="mt-2 flex-1 text-sm leading-relaxed text-muted-foreground">
-                Two more Sportiqo waters are being readied across Mumbai and Pune. Locations still
-                under wraps — WhatsApp us to hear first when the pins drop.
-              </p>
-              <a
-                href={waLink(PRIMARY_WA)}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-5 rounded-full bg-[image:var(--gradient-cta)] px-4 py-2.5 text-center text-sm font-semibold text-accent-foreground"
-              >
-                Notify me
-              </a>
-            </article>
-          </Reveal>
+          {[0, 1].map((i) => (
+            <Reveal key={`soon-${i}`} delay={(LOCATIONS.length + i) * 0.07}>
+              <article className="relative flex h-full min-h-[190px] flex-col items-center justify-center overflow-hidden rounded-2xl border border-dashed border-destructive/50 bg-[color-mix(in_oklab,var(--destructive)_5%,transparent)] p-6 text-center transition-transform duration-500 ease-[var(--ease-swim)] hover:-translate-y-2">
+                <span
+                  aria-hidden="true"
+                  className="font-display text-5xl leading-none text-destructive"
+                >
+                  ?
+                </span>
+                <h3 className="mt-4 font-display text-lg">New Centre</h3>
+                <p className="mt-1 text-xs tracking-[0.28em] text-destructive uppercase">
+                  Coming Soon
+                </p>
+              </article>
+            </Reveal>
+          ))}
         </div>
       </div>
     </section>
@@ -533,10 +527,19 @@ function LocationsSection() {
 
 function Testimonials() {
   const [active, setActive] = useState(0);
+  const [paused, setPaused] = useState(false);
+  const total = TESTIMONIALS.length;
+
+  useEffect(() => {
+    if (paused) return;
+    const id = window.setInterval(() => setActive((i) => (i + 1) % total), 5200);
+    return () => window.clearInterval(id);
+  }, [paused, total]);
+
   const t = TESTIMONIALS[active];
 
   return (
-    <section className="aurora-white py-24 md:py-32">
+    <section className="aurora-white py-20 md:py-32">
       <div className="container-x">
         <Reveal>
           <p className="eyebrow">In their words</p>
@@ -545,59 +548,108 @@ function Testimonials() {
           </h2>
         </Reveal>
 
-        <div className="mt-12 grid gap-10 lg:grid-cols-[1.25fr_1fr]">
+        <div
+          className="mt-10 grid gap-6 lg:grid-cols-[1.3fr_1fr] lg:gap-10"
+          onMouseEnter={() => setPaused(true)}
+          onMouseLeave={() => setPaused(false)}
+          onTouchStart={() => setPaused(true)}
+        >
           <Reveal>
-            <figure className="surface-card relative h-full overflow-hidden rounded-3xl p-8 md:p-12">
+            <figure className="surface-card relative flex h-full flex-col overflow-hidden rounded-3xl p-6 sm:p-8 md:p-12">
               <span
                 aria-hidden="true"
-                className="pointer-events-none absolute -top-14 right-2 font-display text-[12rem] leading-none text-primary/10 select-none"
+                className="pointer-events-none absolute -top-10 right-0 font-display text-[7rem] leading-none text-primary/10 select-none md:-top-14 md:text-[12rem]"
               >
                 “
               </span>
-              <Quote className="h-7 w-7 text-primary/70" aria-hidden="true" />
-              <motion.blockquote
-                key={t.name}
-                initial={{ opacity: 0, y: 14 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-                className="mt-6 font-display text-xl leading-relaxed md:text-3xl"
-              >
-                {t.quote}
-              </motion.blockquote>
-              <figcaption className="mt-8 flex items-center gap-4 border-t border-border pt-6">
-                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[image:var(--gradient-cta)] font-display text-base text-accent-foreground">
+              <Quote className="h-6 w-6 shrink-0 text-primary/70 md:h-7 md:w-7" aria-hidden="true" />
+              <AnimatePresence mode="wait">
+                <motion.blockquote
+                  key={t.name}
+                  initial={{ opacity: 0, y: 16 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -12 }}
+                  transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                  className="mt-5 min-h-[9.5rem] font-display text-lg leading-relaxed sm:min-h-[8rem] sm:text-xl md:min-h-[10rem] md:text-3xl"
+                >
+                  {t.quote}
+                </motion.blockquote>
+              </AnimatePresence>
+              <figcaption className="mt-6 grid grid-cols-[auto_minmax(0,1fr)] items-center gap-3 border-t border-border pt-5 sm:flex sm:gap-4 md:mt-8">
+                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[image:var(--gradient-cta)] font-display text-base text-accent-foreground md:h-11 md:w-11">
                   {t.name.charAt(0)}
                 </span>
                 <span className="min-w-0">
-                  <span className="block truncate font-semibold">{t.name}</span>
-                  <span className="block truncate text-sm text-muted-foreground">{t.detail}</span>
+                  <span className="block truncate text-sm font-semibold md:text-base">
+                    {t.name}
+                  </span>
+                  <span className="block truncate text-xs text-muted-foreground md:text-sm">
+                    {t.detail}
+                  </span>
                 </span>
-                <span className="ml-auto shrink-0 text-sm tracking-[0.3em] text-accent">★★★★★</span>
+                <span className="col-span-2 shrink-0 text-xs tracking-[0.3em] text-accent sm:col-span-1 sm:ml-auto sm:text-sm">
+                  ★★★★★
+                </span>
               </figcaption>
+
+              <div className="mt-6 flex items-center gap-3">
+                <div className="flex flex-1 gap-1.5" role="tablist" aria-label="Testimonials">
+                  {TESTIMONIALS.map((item, i) => (
+                    <button
+                      key={item.name}
+                      type="button"
+                      role="tab"
+                      aria-selected={i === active}
+                      aria-label={`Show testimonial from ${item.name}`}
+                      onClick={() => setActive(i)}
+                      className={`h-1.5 flex-1 rounded-full transition-colors duration-500 ${
+                        i === active ? "bg-primary" : "bg-border"
+                      }`}
+                    />
+                  ))}
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setActive((i) => (i - 1 + total) % total)}
+                  aria-label="Previous testimonial"
+                  className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-border transition-colors hover:border-primary hover:text-primary"
+                >
+                  <ChevronLeft className="h-4 w-4" />
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setActive((i) => (i + 1) % total)}
+                  aria-label="Next testimonial"
+                  className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-border transition-colors hover:border-primary hover:text-primary"
+                >
+                  <ChevronRight className="h-4 w-4" />
+                </button>
+              </div>
             </figure>
           </Reveal>
 
           <Reveal delay={0.1}>
-            <ul className="flex h-full flex-col gap-2">
+            <ul className="hidden h-full flex-col gap-2 lg:flex">
               {TESTIMONIALS.map((item, i) => (
                 <li key={item.name}>
                   <button
                     type="button"
                     onClick={() => setActive(i)}
                     aria-pressed={i === active}
-                    className={`w-full rounded-2xl border px-5 py-4 text-left transition-all duration-400 ease-[var(--ease-swim)] ${
+                    className={`w-full rounded-2xl border px-5 py-4 text-left transition-all duration-500 ease-[var(--ease-swim)] ${
                       i === active
                         ? "translate-x-1 border-primary bg-[color-mix(in_oklab,var(--primary)_8%,transparent)]"
                         : "border-border hover:translate-x-1 hover:border-primary/50"
                     }`}
                   >
-                    <span className="block text-sm font-semibold">{item.name}</span>
+                    <span className="block truncate text-sm font-semibold">{item.name}</span>
                     <span className="block truncate text-xs text-muted-foreground">
                       {item.detail}
                     </span>
                   </button>
                 </li>
               ))}
+
             </ul>
           </Reveal>
         </div>
@@ -605,6 +657,7 @@ function Testimonials() {
     </section>
   );
 }
+
 
 
 function Credentials() {

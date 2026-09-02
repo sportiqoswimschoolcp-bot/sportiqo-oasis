@@ -14,10 +14,24 @@ import toddlerLift from "@/assets/photo-toddler-lift.jpg.asset.json";
 import parentChild from "@/assets/photo-parent-child.jpg.asset.json";
 import babyClass from "@/assets/photo-baby-class.jpg.asset.json";
 import prabhadeviPool from "@/assets/photo-prabhadevi-pool.jpg.asset.json";
+import prabhadeviDeck from "@/assets/prabhadevi-deck-1.jpg.asset.json";
+import prabhadeviSquad from "@/assets/prabhadevi-squad.jpg.asset.json";
+import prabhadeviLanes from "@/assets/prabhadevi-lanes.jpg.asset.json";
+import prabhadeviMorning from "@/assets/prabhadevi-morning.jpg.asset.json";
+import prabhadeviCoaches from "@/assets/prabhadevi-coaches.jpg.asset.json";
+import bkcGroupNight from "@/assets/bkc-group-night.jpg.asset.json";
+import bkcBackfloat from "@/assets/bkc-backfloat.jpg.asset.json";
 
 /** Real photography from our pools. */
 export const PHOTOS = {
   prabhadeviPool: prabhadeviPool.url,
+  prabhadeviDeck: prabhadeviDeck.url,
+  prabhadeviSquad: prabhadeviSquad.url,
+  prabhadeviLanes: prabhadeviLanes.url,
+  prabhadeviMorning: prabhadeviMorning.url,
+  prabhadeviCoaches: prabhadeviCoaches.url,
+  bkcGroupNight: bkcGroupNight.url,
+  bkcBackfloat: bkcBackfloat.url,
   cuffeNight: cuffeNight.url,
   kidsKickboard: kidsKickboard.url,
   kidsCoach: kidsCoach.url,
@@ -25,6 +39,7 @@ export const PHOTOS = {
   parentChild: parentChild.url,
   babyClass: babyClass.url,
 };
+
 
 export const IMAGES = {
   heroRooftop,
@@ -46,6 +61,35 @@ export const REAL_SHOTS: Shot[] = [
     src: PHOTOS.prabhadeviPool,
     alt: "Sportiqo's covered eight-lane swimming pool at Prabhadevi, Mumbai with starting blocks and clear blue water",
   },
+  {
+    src: PHOTOS.prabhadeviSquad,
+    alt: "The Sportiqo squad standing together in the lane pool at Prabhadevi, Mumbai after an evening training session",
+  },
+  {
+    src: PHOTOS.prabhadeviLanes,
+    alt: "Wide view of the roped lanes and coaching deck at Sportiqo Prabhadevi during a busy training block",
+  },
+  {
+    src: PHOTOS.prabhadeviDeck,
+    alt: "Swimmers resting at the wall while Sportiqo coaches brief them from the deck at Prabhadevi",
+  },
+  {
+    src: PHOTOS.prabhadeviMorning,
+    alt: "Early morning batch swimming in the sunlit indoor pool at Sportiqo Prabhadevi",
+  },
+  {
+    src: PHOTOS.prabhadeviCoaches,
+    alt: "Two Sportiqo coaches running a stroke drill with adult swimmers at the Prabhadevi pool",
+  },
+  {
+    src: PHOTOS.bkcGroupNight,
+    alt: "Sportiqo swimmers celebrating in the floodlit outdoor pool at District Sports Club, BKC, Mumbai",
+  },
+  {
+    src: PHOTOS.bkcBackfloat,
+    alt: "A Sportiqo coach supporting a child through a back float at District Sports Club, BKC",
+  },
+
   {
     src: PHOTOS.cuffeNight,
     alt: "Sportiqo's floodlit lane pool at Cuffe Parade, Mumbai glowing turquoise in the evening",
@@ -109,24 +153,21 @@ export const GALLERY: Shot[] = [
 ];
 
 /**
- * Build N marquee rows where no photograph repeats within a row, and no two
- * rows show the same photograph in the same column position.
+ * Build N marquee rows. Every photograph is used at most once across the whole
+ * set of rows (when the pool is large enough), so no image is ever on screen
+ * twice at the same moment. Rows are also strided so neighbouring rows never
+ * scroll the same subject side by side.
  */
 export function buildShotRows(rows: number, perRow: number, pool: Shot[] = GALLERY): Shot[][] {
   const n = pool.length;
+  const gcd = (a: number, b: number): number => (b === 0 ? a : gcd(b, a % b));
+  let step = 7;
+  while (step > 1 && gcd(step, n) !== 1) step -= 1;
+  const order = Array.from({ length: n }, (_, i) => pool[(i * step + 3) % n]);
+
+
   return Array.from({ length: rows }, (_, r) =>
-    Array.from({ length: perRow }, (_, c) => pool[(r * 5 + c * 3 + r * c) % n]),
-  ).map((row) =>
-    // de-duplicate inside the row by nudging collisions forward
-    row.reduce<Shot[]>((acc, shot) => {
-      let candidate = shot;
-      let guard = 0;
-      while (acc.includes(candidate) && guard < n) {
-        candidate = pool[(pool.indexOf(candidate) + 1) % n];
-        guard += 1;
-      }
-      acc.push(candidate);
-      return acc;
-    }, []),
+    Array.from({ length: perRow }, (_, c) => order[(r * perRow + c) % n]),
   );
+
 }
