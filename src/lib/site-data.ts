@@ -111,32 +111,34 @@ export const LOCATIONS: Location[] = [
       "swimming academy Kothrud, swimming classes in Kothrud Pune, swim coaching Karve Road, competitive swimming Pune",
   },
   {
-    slug: "dsc",
-    name: "DSC",
-    city: "Pune",
-    path: "/locations/dsc",
+    slug: "bkc",
+    name: "BKC",
+    city: "Mumbai",
+    path: "/locations/bkc",
     phone: "918452917393",
     phoneDisplay: "84529 17393",
     wa: "918452917393",
-    headline: "Swimming Classes at DSC (Deccan Sports Club)",
-    oneLiner: "A club-standard pool for structured, year-round athlete development.",
-    address: "DSC Sports Complex",
-    locality: "DSC",
+    headline: "Swimming Classes at District Sports Club, BKC",
+    oneLiner: "A club-standard pool in the heart of BKC for structured, year-round development.",
+    address: "District Sports Club, Bandra Kurla Complex",
+    locality: "Bandra Kurla Complex",
     region: "Maharashtra",
-    postal: "411004",
-    geo: { lat: 18.5167, lng: 73.8412 },
+    postal: "400051",
+    geo: { lat: 19.0662, lng: 72.8657 },
     hours: "Mo-Su 06:00-20:30",
-    mapQuery: "Deccan Sports Club, Pune, Maharashtra",
-    mapsUrl: "https://www.google.com/maps/search/?api=1&query=Deccan%20Sports%20Club%20Pune",
+    mapQuery: "District Sports Club, Bandra Kurla Complex, Mumbai",
+    mapsUrl:
+      "https://www.google.com/maps/search/?api=1&query=District%20Sports%20Club%20BKC%20Mumbai",
     highlights: [
       "Club-grade facility with timing systems and starting blocks",
       "Year-round squad calendar with periodised training blocks",
-      "Strength-and-conditioning support alongside pool sessions",
+      "Minutes from Bandra East, Kurla, Santacruz and Kalina",
       "Dedicated masters lane for adult fitness swimmers",
     ],
     keywords:
-      "DSC swimming classes, swimming coaching DSC, swim academy DSC, competitive swim squad DSC",
+      "swimming classes BKC, swim school Bandra Kurla Complex, District Sports Club swimming, swimming coaching Bandra East Mumbai",
   },
+
 ];
 
 /** General enquiry line — used everywhere that is not branch-specific. */
