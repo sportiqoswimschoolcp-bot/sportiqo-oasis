@@ -645,9 +645,9 @@ function Testimonials() {
                       {item.detail}
                     </span>
                   </button>
-                ))}
                 </li>
               ))}
+
             </ul>
           </Reveal>
         </div>
