@@ -160,9 +160,11 @@ export const GALLERY: Shot[] = [
  */
 export function buildShotRows(rows: number, perRow: number, pool: Shot[] = GALLERY): Shot[][] {
   const n = pool.length;
-  // Deterministic stride shuffle — coprime step spreads the pool evenly.
-  const step = n % 7 === 0 ? 5 : 7;
+  const gcd = (a: number, b: number): number => (b === 0 ? a : gcd(b, a % b));
+  let step = 7;
+  while (step > 1 && gcd(step, n) !== 1) step -= 1;
   const order = Array.from({ length: n }, (_, i) => pool[(i * step + 3) % n]);
+
 
   return Array.from({ length: rows }, (_, r) =>
     Array.from({ length: perRow }, (_, c) => order[(r * perRow + c) % n]),
