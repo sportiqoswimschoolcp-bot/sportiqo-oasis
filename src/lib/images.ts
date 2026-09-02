@@ -62,6 +62,35 @@ export const REAL_SHOTS: Shot[] = [
     alt: "Sportiqo's covered eight-lane swimming pool at Prabhadevi, Mumbai with starting blocks and clear blue water",
   },
   {
+    src: PHOTOS.prabhadeviSquad,
+    alt: "The Sportiqo squad standing together in the lane pool at Prabhadevi, Mumbai after an evening training session",
+  },
+  {
+    src: PHOTOS.prabhadeviLanes,
+    alt: "Wide view of the roped lanes and coaching deck at Sportiqo Prabhadevi during a busy training block",
+  },
+  {
+    src: PHOTOS.prabhadeviDeck,
+    alt: "Swimmers resting at the wall while Sportiqo coaches brief them from the deck at Prabhadevi",
+  },
+  {
+    src: PHOTOS.prabhadeviMorning,
+    alt: "Early morning batch swimming in the sunlit indoor pool at Sportiqo Prabhadevi",
+  },
+  {
+    src: PHOTOS.prabhadeviCoaches,
+    alt: "Two Sportiqo coaches running a stroke drill with adult swimmers at the Prabhadevi pool",
+  },
+  {
+    src: PHOTOS.bkcGroupNight,
+    alt: "Sportiqo swimmers celebrating in the floodlit outdoor pool at District Sports Club, BKC, Mumbai",
+  },
+  {
+    src: PHOTOS.bkcBackfloat,
+    alt: "A Sportiqo coach supporting a child through a back float at District Sports Club, BKC",
+  },
+
+  {
     src: PHOTOS.cuffeNight,
     alt: "Sportiqo's floodlit lane pool at Cuffe Parade, Mumbai glowing turquoise in the evening",
   },
