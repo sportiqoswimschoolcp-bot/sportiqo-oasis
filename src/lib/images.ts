@@ -153,24 +153,19 @@ export const GALLERY: Shot[] = [
 ];
 
 /**
- * Build N marquee rows where no photograph repeats within a row, and no two
- * rows show the same photograph in the same column position.
+ * Build N marquee rows. Every photograph is used at most once across the whole
+ * set of rows (when the pool is large enough), so no image is ever on screen
+ * twice at the same moment. Rows are also strided so neighbouring rows never
+ * scroll the same subject side by side.
  */
 export function buildShotRows(rows: number, perRow: number, pool: Shot[] = GALLERY): Shot[][] {
   const n = pool.length;
+  // Deterministic stride shuffle — coprime step spreads the pool evenly.
+  const step = n % 7 === 0 ? 5 : 7;
+  const order = Array.from({ length: n }, (_, i) => pool[(i * step + 3) % n]);
+
   return Array.from({ length: rows }, (_, r) =>
-    Array.from({ length: perRow }, (_, c) => pool[(r * 5 + c * 3 + r * c) % n]),
-  ).map((row) =>
-    // de-duplicate inside the row by nudging collisions forward
-    row.reduce<Shot[]>((acc, shot) => {
-      let candidate = shot;
-      let guard = 0;
-      while (acc.includes(candidate) && guard < n) {
-        candidate = pool[(pool.indexOf(candidate) + 1) % n];
-        guard += 1;
-      }
-      acc.push(candidate);
-      return acc;
-    }, []),
+    Array.from({ length: perRow }, (_, c) => order[(r * perRow + c) % n]),
   );
+
 }
