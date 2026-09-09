@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
-import { Instagram, MapPin, Phone } from "lucide-react";
+import { Instagram, Phone } from "lucide-react";
+import { GoogleMapsIcon } from "@/components/site/GoogleMapsIcon";
 import logo from "@/assets/sportiqo-logo.png.asset.json";
 import {
   BRAND,
