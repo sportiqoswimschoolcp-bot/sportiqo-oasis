@@ -44,8 +44,8 @@ export const Route = createFileRoute("/")({
 });
 
 const STATS = [
-  "4 Pools · Mumbai & Pune",
-  "3,500+ Swimmers Trained",
+  "",
+  "35,000+ SWIMMERS TRAINED\n",
   "Australian-Certified Coaches",
   "Multiple Locations Across Maharashtra",
   "1:6 Student-Coach Ratio",
