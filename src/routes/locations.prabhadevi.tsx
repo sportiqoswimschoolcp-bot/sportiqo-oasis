@@ -6,7 +6,7 @@ import { IMAGES } from "@/lib/images";
 const L = LOCATIONS[0];
 const TITLE = "Swimming Classes in Prabhadevi, Mumbai | Sportiqo Swim School";
 const DESC =
-  "Learn to swim in Prabhadevi with Australian-certified coaches. Kids and adult batches, 1:4 ratio, warm clean water. Minutes from Dadar, Worli and Mahim.";
+  "Learn to swim in Prabhadevi with Australian-certified coaches. Kids and adult batches, 1:6 ratio, warm clean water. Minutes from Dadar, Worli and Mahim.";
 
 export const Route = createFileRoute("/locations/prabhadevi")({
   head: () => ({

@@ -47,8 +47,8 @@ const STATS = [
   "4 Pools · Mumbai & Pune",
   "3,500+ Swimmers Trained",
   "Australian-Certified Coaches",
-  `Teaching Since ${BRAND.since}`,
-  "1:4 Coach-to-Swimmer Ratio",
+  "Multiple Locations Across Maharashtra",
+  "1:6 Student-Coach Ratio",
   "Water Tested Twice Daily",
 ];
 
@@ -491,13 +491,24 @@ function LocationsSection() {
                   >
                     <Phone className="h-3.5 w-3.5 shrink-0" /> +91 {l.phoneDisplay}
                   </a>
-                  <Link
-                    to={l.path}
-                    onClick={(e) => e.stopPropagation()}
-                    className="mt-5 rounded-full border border-border px-4 py-2.5 text-center text-sm font-medium transition-colors hover:border-primary hover:text-primary"
-                  >
-                    View Location
-                  </Link>
+                  <div className="mt-5 flex flex-col gap-2">
+                    <Link
+                      to={l.path}
+                      onClick={(e) => e.stopPropagation()}
+                      className="rounded-full border border-border px-4 py-2.5 text-center text-sm font-medium transition-colors hover:border-primary hover:text-primary"
+                    >
+                      View Location
+                    </Link>
+                    <a
+                      href={waLink(l.wa, `Hi Sportiqo ${l.name}! I'd like to know more about batches at ${l.name}.`)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={(e) => e.stopPropagation()}
+                      className="rounded-full bg-[#25D366] px-4 py-2.5 text-center text-sm font-semibold text-[#062b17] transition-transform hover:scale-[1.02]"
+                    >
+                      WhatsApp {l.name}
+                    </a>
+                  </div>
                 </article>
               </Reveal>
             );
