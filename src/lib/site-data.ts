@@ -46,9 +46,9 @@ export const LOCATIONS: Location[] = [
     geo: { lat: 19.0176, lng: 72.8296 },
     hours: "Mo-Su 06:00-21:00",
     mapQuery: "Sportiqo Swim School, Prabhadevi, Mumbai, Maharashtra 400025",
-    mapsUrl: "https://www.google.com/maps/search/?api=1&query=Sportiqo%20Swim%20School%20Prabhadevi%20Mumbai",
+    mapsUrl: "https://share.google/zlKsEdOfWdEXvfcNl",
     highlights: [
-      "Learn-to-swim batches for ages 4+ with a 1:4 coach ratio",
+      "Learn-to-swim batches for ages 4+ with a 1:6 coach ratio",
       "Warm, chlorine-balanced water tested twice daily",
       "Ten minutes from Dadar, Worli, Lower Parel and Mahim",
       "Weekday early-morning slots designed around school timings",
@@ -100,7 +100,7 @@ export const LOCATIONS: Location[] = [
     geo: { lat: 18.5074, lng: 73.8077 },
     hours: "Mo-Su 06:00-21:00",
     mapQuery: "Sportiqo Swim School, Kothrud, Pune, Maharashtra 411038",
-    mapsUrl: "https://www.google.com/maps/search/?api=1&query=Sportiqo%20Swim%20School%20Kothrud%20Pune",
+    mapsUrl: "https://share.google/kBwi2x7edp5ta99U2",
     highlights: [
       "Full-length lane pool built for stroke correction and endurance sets",
       "Squad programme feeding district and state-level meets",
@@ -127,8 +127,7 @@ export const LOCATIONS: Location[] = [
     geo: { lat: 19.0662, lng: 72.8657 },
     hours: "Mo-Su 06:00-20:30",
     mapQuery: "District Sports Club, Bandra Kurla Complex, Mumbai",
-    mapsUrl:
-      "https://www.google.com/maps/search/?api=1&query=District%20Sports%20Club%20BKC%20Mumbai",
+    mapsUrl: "https://share.google/dNPdZH13YiuktFflq",
     highlights: [
       "Club-grade facility with timing systems and starting blocks",
       "Year-round squad calendar with periodised training blocks",
@@ -158,10 +157,6 @@ export const mapEmbed = (query: string, geo?: { lat: number; lng: number }) =>
     ? `https://www.google.com/maps?q=${geo.lat},${geo.lng}(${encodeURIComponent(query)})&z=17&output=embed`
     : `https://www.google.com/maps?q=${encodeURIComponent(query)}&output=embed`;
 
-export const mapDirections = (query: string, geo?: { lat: number; lng: number }) =>
-  geo
-    ? `https://www.google.com/maps/dir/?api=1&destination=${geo.lat},${geo.lng}`
-    : `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(query)}`;
 
 export const localBusinessSchema = (l: Location) => ({
   "@context": "https://schema.org",
