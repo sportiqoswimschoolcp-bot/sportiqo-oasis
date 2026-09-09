@@ -10,11 +10,10 @@ type Props = {
   image: string;
   imageAlt: string;
   intro: string[];
-  batches: { label: string; detail: string }[];
 };
 
 /** Shared shell for a single branch page. Copy stays in each route file. */
-export function LocationPage({ location: l, image, imageAlt, intro, batches }: Props) {
+export function LocationPage({ location: l, image, imageAlt, intro }: Props) {
   return (
     <>
       <PageHero
@@ -67,17 +66,6 @@ export function LocationPage({ location: l, image, imageAlt, intro, batches }: P
               ))}
             </div>
 
-            <Reveal>
-              <h3 className="mt-14 font-display text-2xl">Batches at this pool</h3>
-              <ul className="mt-5 divide-y divide-border border-y border-border">
-                {batches.map((b) => (
-                  <li key={b.label} className="flex flex-wrap items-baseline justify-between gap-2 py-4">
-                    <span className="font-medium">{b.label}</span>
-                    <span className="text-sm text-muted-foreground">{b.detail}</span>
-                  </li>
-                ))}
-              </ul>
-            </Reveal>
           </div>
 
           <aside className="lg:sticky lg:top-28 lg:self-start">
