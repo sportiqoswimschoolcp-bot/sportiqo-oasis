@@ -13,7 +13,7 @@ import {
   ChevronRight,
 } from "lucide-react";
 
-
+import { GoogleMapsIcon } from "@/components/site/GoogleMapsIcon";
 
 import { Reveal } from "@/components/site/Reveal";
 import { Marquee } from "@/components/site/Marquee";
