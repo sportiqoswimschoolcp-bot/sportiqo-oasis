@@ -3,7 +3,7 @@ import { Phone, Navigation, Clock, CheckCircle2 } from "lucide-react";
 import { PageHero } from "./PageHero";
 import { Reveal } from "./Reveal";
 import { CtaBand } from "./CtaBand";
-import { type Location, mapDirections, mapEmbed, waLink } from "@/lib/site-data";
+import { type Location, mapEmbed, waLink } from "@/lib/site-data";
 
 type Props = {
   location: Location;
@@ -111,7 +111,7 @@ export function LocationPage({ location: l, image, imageAlt, intro, batches }: P
                     <Phone className="h-4 w-4" /> +91 {l.phoneDisplay}
                   </a>
                   <a
-                    href={mapDirections(l.mapQuery, l.geo)}
+                    href={l.mapsUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center justify-center gap-2 rounded-full border border-border px-6 py-3 font-medium hover:border-primary hover:text-primary"
