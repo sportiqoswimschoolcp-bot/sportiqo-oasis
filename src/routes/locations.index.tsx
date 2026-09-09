@@ -133,12 +133,14 @@ function LocationsIndex() {
                     <li key={h}>· {h}</li>
                   ))}
                 </ul>
-                <Link
-                  to={l.path}
-                  className="mt-5 rounded-full border border-border px-4 py-2.5 text-center text-sm font-medium hover:border-primary hover:text-primary"
+                <a
+                  href={l.mapsUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-5 flex items-center justify-center gap-2 rounded-full border border-border px-4 py-2.5 text-center text-sm font-medium hover:border-primary hover:text-primary"
                 >
-                  View Location
-                </Link>
+                  <GoogleMapsIcon className="h-4 w-4 shrink-0" /> Directions
+                </a>
               </article>
             </Reveal>
           ))}
