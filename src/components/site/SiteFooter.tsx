@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
-import { Instagram, MapPin, Phone } from "lucide-react";
+import { Instagram, Phone } from "lucide-react";
+import { GoogleMapsIcon } from "@/components/site/GoogleMapsIcon";
 import logo from "@/assets/sportiqo-logo.png.asset.json";
 import {
   BRAND,
@@ -87,7 +88,7 @@ export function SiteFooter() {
                       rel="noopener noreferrer"
                       className="mt-1 flex items-center gap-2 text-sm text-muted-foreground hover:text-primary"
                     >
-                      <MapPin className="h-3.5 w-3.5 shrink-0" /> View on Google Maps
+                      <GoogleMapsIcon className="h-3.5 w-3.5 shrink-0" /> Get Directions
                     </a>
                   </li>
                 ))}

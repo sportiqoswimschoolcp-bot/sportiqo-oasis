@@ -13,7 +13,7 @@ import {
   ChevronRight,
 } from "lucide-react";
 
-
+import { GoogleMapsIcon } from "@/components/site/GoogleMapsIcon";
 
 import { Reveal } from "@/components/site/Reveal";
 import { Marquee } from "@/components/site/Marquee";
@@ -492,13 +492,15 @@ function LocationsSection() {
                     <Phone className="h-3.5 w-3.5 shrink-0" /> +91 {l.phoneDisplay}
                   </a>
                   <div className="mt-5 flex flex-col gap-2">
-                    <Link
-                      to={l.path}
+                    <a
+                      href={l.mapsUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       onClick={(e) => e.stopPropagation()}
-                      className="rounded-full border border-border px-4 py-2.5 text-center text-sm font-medium transition-colors hover:border-primary hover:text-primary"
+                      className="flex items-center justify-center gap-2 rounded-full border border-border px-4 py-2.5 text-center text-sm font-medium transition-colors hover:border-primary hover:text-primary"
                     >
-                      View Location
-                    </Link>
+                      <GoogleMapsIcon className="h-4 w-4 shrink-0" /> Directions
+                    </a>
                     <a
                       href={waLink(l.wa, `Hi Sportiqo ${l.name}! I'd like to know more about batches at ${l.name}.`)}
                       target="_blank"
