@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { Instagram, Phone } from "lucide-react";
+import { Instagram, MapPin, Phone } from "lucide-react";
 import logo from "@/assets/sportiqo-logo.png.asset.json";
 import {
   BRAND,
@@ -8,7 +8,6 @@ import {
   GENERAL_PHONE_DISPLAY,
   GENERAL_WA,
   INSTAGRAM_URL,
-  mapEmbed,
   waLink,
 } from "@/lib/site-data";
 import { WaveDivider } from "./WaveDivider";

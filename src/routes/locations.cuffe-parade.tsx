@@ -40,12 +40,6 @@ function Page() {
         "The setting is the headline, but the coaching is the reason people stay. This is our most requested branch for adult beginners — professionals from Nariman Point and Colaba who never learned as children and would rather learn without an audience. Semi-private and fully private slots exist for exactly that reason.",
         "Kids' batches run in daylight hours with a lifeguard and a coach on deck at all times. Evening squad sessions run under floodlights, which is when the pool looks its best and the sets get their hardest.",
       ]}
-      batches={[
-        { label: "Kids learn-to-swim (4–10 yrs)", detail: "Tue/Thu/Sat · 16:00" },
-        { label: "Adult beginners (private)", detail: "Daily · by appointment" },
-        { label: "Adult fitness lanes", detail: "Mon–Sat · 6:30 & 20:00" },
-        { label: "Sunset skyline session", detail: "Fri/Sun · 18:30" },
-      ]}
     />
   );
 }

@@ -40,12 +40,6 @@ function Page() {
         "Because we sit between Dadar, Worli, Lower Parel and Mahim, most families reach us in under fifteen minutes. That matters more than it sounds — swimming only improves with frequency, and the pool you can actually get to is the pool your child will improve in.",
         "Beginners start in the shallow lane with a coach in the water alongside them. Nobody is pushed into deep water to prove a point. Progression here is graded, recorded and shared with parents at the end of every level.",
       ]}
-      batches={[
-        { label: "Kids learn-to-swim (4–9 yrs)", detail: "Mon/Wed/Fri · 7:00 & 16:30" },
-        { label: "Kids intermediate (9–14 yrs)", detail: "Tue/Thu/Sat · 17:30" },
-        { label: "Adult beginners", detail: "Mon–Fri · 6:00 & 19:30" },
-        { label: "Private one-to-one", detail: "By appointment, all days" },
-      ]}
     />
   );
 }

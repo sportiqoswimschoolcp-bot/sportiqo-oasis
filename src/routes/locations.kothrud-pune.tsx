@@ -40,12 +40,6 @@ function Page() {
         "Pune's competitive scene is genuinely strong, and our Kothrud squad feeds it. Swimmers here follow periodised blocks through the season, get filmed for stroke analysis, and race a real meet calendar rather than an occasional internal gala.",
         "It is still a beginner-friendly pool. Karve Road, Bavdhan, Warje and Deccan families make up most of our morning learn-to-swim batches, and our six-week summer intensive routinely takes a nervous first-timer to comfortable, unaided lengths.",
       ]}
-      batches={[
-        { label: "Learn-to-swim (5–12 yrs)", detail: "Mon/Wed/Fri · 7:30 & 17:00" },
-        { label: "Stroke correction", detail: "Tue/Thu · 18:00" },
-        { label: "Competitive squad", detail: "Mon–Sat · 5:45 & 19:00" },
-        { label: "Summer intensive (6 weeks)", detail: "April–June · daily" },
-      ]}
     />
   );
 }
