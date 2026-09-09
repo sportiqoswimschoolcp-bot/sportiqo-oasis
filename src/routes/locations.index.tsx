@@ -4,7 +4,7 @@ import { Phone, Navigation } from "lucide-react";
 import { PageHero } from "@/components/site/PageHero";
 import { Reveal } from "@/components/site/Reveal";
 import { CtaBand } from "@/components/site/CtaBand";
-import { LOCATIONS, mapDirections, mapEmbed } from "@/lib/site-data";
+import { LOCATIONS, mapEmbed } from "@/lib/site-data";
 import { IMAGES } from "@/lib/images";
 
 const TITLE = "Our Swimming Pools in Mumbai & Pune | Sportiqo Swim School";
@@ -105,7 +105,7 @@ function LocationsIndex() {
                     <Phone className="h-4 w-4" /> +91 {active.phoneDisplay}
                   </a>
                   <a
-                    href={mapDirections(active.mapQuery, active.geo)}
+                    href={active.mapsUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-2 rounded-full border border-border px-6 py-3 text-sm hover:border-primary hover:text-primary"

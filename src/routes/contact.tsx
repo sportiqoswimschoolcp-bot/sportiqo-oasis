@@ -7,7 +7,6 @@ import {
   GENERAL_PHONE,
   GENERAL_PHONE_DISPLAY,
   GENERAL_WA,
-  mapDirections,
   mapEmbed,
   waLink,
 } from "@/lib/site-data";
@@ -98,7 +97,7 @@ function Contact() {
                       WhatsApp
                     </a>
                     <a
-                      href={mapDirections(l.mapQuery, l.geo)}
+                      href={l.mapsUrl}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex items-center gap-2 rounded-full border border-border px-4 py-2 text-sm hover:border-primary hover:text-primary"

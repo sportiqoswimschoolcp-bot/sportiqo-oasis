@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { Instagram, Phone } from "lucide-react";
+import { Instagram, MapPin, Phone } from "lucide-react";
 import logo from "@/assets/sportiqo-logo.png.asset.json";
 import {
   BRAND,
@@ -8,7 +8,6 @@ import {
   GENERAL_PHONE_DISPLAY,
   GENERAL_WA,
   INSTAGRAM_URL,
-  mapEmbed,
   waLink,
 } from "@/lib/site-data";
 import { WaveDivider } from "./WaveDivider";
@@ -82,13 +81,14 @@ export function SiteFooter() {
                     >
                       <Phone className="h-3.5 w-3.5 shrink-0" /> +91 {l.phoneDisplay}
                     </a>
-                    <iframe
-                      title={`Map of Sportiqo Swim School ${l.name}`}
-                      src={mapEmbed(l.mapQuery, l.geo)}
-                      loading="lazy"
-                      referrerPolicy="no-referrer-when-downgrade"
-                      className="mt-2 h-20 w-full rounded-md border border-border opacity-80 grayscale-[0.3]"
-                    />
+                    <a
+                      href={l.mapsUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-1 flex items-center gap-2 text-sm text-muted-foreground hover:text-primary"
+                    >
+                      <MapPin className="h-3.5 w-3.5 shrink-0" /> View on Google Maps
+                    </a>
                   </li>
                 ))}
               </ul>

@@ -40,12 +40,6 @@ function Page() {
         "The calendar here is year-round and periodised: base endurance, threshold work, race pace, taper, repeat. Athletes get dryland strength-and-conditioning alongside pool volume, because the shoulder that carries a season is built out of the water as much as in it.",
         "Not everyone here is racing. A dedicated masters lane runs early mornings for adults who simply want a hard, well-coached swim before work — same standards, no medals required.",
       ]}
-      batches={[
-        { label: "Development squad", detail: "Mon/Wed/Fri · 6:00" },
-        { label: "Performance squad", detail: "Mon–Sat · 5:30 & 18:30" },
-        { label: "Dryland S&C", detail: "Tue/Thu · 17:30" },
-        { label: "Masters fitness lane", detail: "Mon–Fri · 6:45" },
-      ]}
     />
   );
 }
