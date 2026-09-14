@@ -1,12 +1,3 @@
-import heroRooftop from "@/assets/hero-rooftop-pool.jpg";
-import kidUnderwater from "@/assets/gallery-kid-underwater.jpg";
-import coachKids from "@/assets/gallery-coach-kids.jpg";
-import competitive from "@/assets/gallery-competitive.jpg";
-import adults from "@/assets/gallery-adults.jpg";
-import awards from "@/assets/gallery-awards.jpg";
-import caustics from "@/assets/texture-caustics.jpg";
-import poolPune from "@/assets/pool-pune.jpg";
-
 import cuffeNight from "@/assets/photo-cuffe-night.jpg.asset.json";
 import kidsKickboard from "@/assets/photo-kids-kickboard.jpg.asset.json";
 import kidsCoach from "@/assets/photo-kids-coach.jpg.asset.json";
@@ -21,6 +12,10 @@ import prabhadeviMorning from "@/assets/prabhadevi-morning.jpg.asset.json";
 import prabhadeviCoaches from "@/assets/prabhadevi-coaches.jpg.asset.json";
 import bkcGroupNight from "@/assets/bkc-group-night.jpg.asset.json";
 import bkcBackfloat from "@/assets/bkc-backfloat.jpg.asset.json";
+import sportiqoKidGoggles from "@/assets/sportiqo-kid-goggles.webp.asset.json";
+import sportiqoKidPoolside from "@/assets/sportiqo-kid-poolside.webp.asset.json";
+import sportiqoIndoorPool from "@/assets/sportiqo-indoor-pool.webp.asset.json";
+import sportiqoCoachLesson from "@/assets/sportiqo-coach-lesson.webp.asset.json";
 
 /** Real photography from our pools. */
 export const PHOTOS = {
@@ -38,18 +33,22 @@ export const PHOTOS = {
   toddlerLift: toddlerLift.url,
   parentChild: parentChild.url,
   babyClass: babyClass.url,
+  kidGoggles: sportiqoKidGoggles.url,
+  kidPoolside: sportiqoKidPoolside.url,
+  indoorPool: sportiqoIndoorPool.url,
+  coachLesson: sportiqoCoachLesson.url,
 };
 
 
 export const IMAGES = {
-  heroRooftop,
-  kidUnderwater,
-  coachKids,
-  competitive,
-  adults,
-  awards,
-  caustics,
-  poolPune,
+  heroRooftop: PHOTOS.indoorPool,
+  kidUnderwater: PHOTOS.kidGoggles,
+  coachKids: PHOTOS.coachLesson,
+  competitive: PHOTOS.coachLesson,
+  adults: PHOTOS.kidPoolside,
+  awards: PHOTOS.kidGoggles,
+  caustics: PHOTOS.indoorPool,
+  poolPune: PHOTOS.indoorPool,
   ...PHOTOS,
 };
 
@@ -89,7 +88,22 @@ export const REAL_SHOTS: Shot[] = [
     src: PHOTOS.bkcBackfloat,
     alt: "A Sportiqo coach supporting a child through a back float at District Sports Club, BKC",
   },
-
+  {
+    src: PHOTOS.indoorPool,
+    alt: "Sportiqo's bright indoor training pool with starting blocks and clear blue water",
+  },
+  {
+    src: PHOTOS.kidGoggles,
+    alt: "A young Sportiqo swimmer adjusting their goggles before entering the pool",
+  },
+  {
+    src: PHOTOS.kidPoolside,
+    alt: "A young Sportiqo swimmer seated at the pool edge during a coached lesson",
+  },
+  {
+    src: PHOTOS.coachLesson,
+    alt: "A Sportiqo coach guiding a young swimmer through a pool lesson",
+  },
   {
     src: PHOTOS.cuffeNight,
     alt: "Sportiqo's floodlit lane pool at Cuffe Parade, Mumbai glowing turquoise in the evening",
@@ -118,38 +132,6 @@ export const REAL_SHOTS: Shot[] = [
 
 export const GALLERY: Shot[] = [
   ...REAL_SHOTS,
-  {
-    src: heroRooftop,
-    alt: "Sportiqo's floodlit rooftop swimming pool in Cuffe Parade with the Mumbai skyline behind it at night",
-  },
-  {
-    src: kidUnderwater,
-    alt: "A young Sportiqo swimmer in goggles gliding underwater during a kids learn-to-swim class",
-  },
-  {
-    src: coachKids,
-    alt: "An Australian-certified Sportiqo coach instructing a small group of children at the poolside in Prabhadevi",
-  },
-  {
-    src: competitive,
-    alt: "A competitive Sportiqo athlete powering through a butterfly stroke during squad training",
-  },
-  {
-    src: adults,
-    alt: "Adult beginners swimming lengths during a coached adult batch at Sportiqo Swim School",
-  },
-  {
-    src: awards,
-    alt: "Young Sportiqo swimmers holding medals and trophies after an inter-club swim meet",
-  },
-  {
-    src: poolPune,
-    alt: "Sportiqo's full-length outdoor lane pool in Kothrud, Pune at golden hour",
-  },
-  {
-    src: caustics,
-    alt: "Close-up of sunlight caustics shimmering across clear turquoise pool water",
-  },
 ];
 
 /**
