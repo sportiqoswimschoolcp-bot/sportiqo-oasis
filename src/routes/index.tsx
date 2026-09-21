@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
-import { AnimatePresence, motion, useScroll, useTransform } from "motion/react";
+import { AnimatePresence, motion } from "motion/react";
 import {
   ShieldCheck,
   Waves,
@@ -19,6 +19,7 @@ import { Reveal } from "@/components/site/Reveal";
 import { Marquee } from "@/components/site/Marquee";
 import { WaveDivider } from "@/components/site/WaveDivider";
 import { CtaBand } from "@/components/site/CtaBand";
+import heroGroupPhoto from "@/assets/sportiqo-bkc-group-hero.jpg.asset.json";
 import { GALLERY, IMAGES, PHOTOS, buildShotRows } from "@/lib/images";
 import { BRAND, LOCATIONS, PRIMARY_WA, mapEmbed, waLink } from "@/lib/site-data";
 
@@ -181,91 +182,94 @@ function Home() {
 }
 
 function Hero() {
-  const ref = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
-  const bgY = useTransform(scrollYProgress, [0, 1], ["0%", "22%"]);
-  const fgY = useTransform(scrollYProgress, [0, 1], ["0%", "-12%"]);
-  const fade = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
+  const trialUrl =
+    "https://api.whatsapp.com/send/?phone=918452917393&text=Hi+Sportiqo%21+I%27d+like+to+book+a+trial+swim+session.&type=phone_number&app_absent=0";
 
   return (
-    <section ref={ref} className="relative isolate h-[100svh] min-h-[620px] overflow-hidden">
+    <section className="relative isolate h-[100svh] min-h-[680px] overflow-hidden bg-foreground md:min-h-[720px]">
       <motion.img
-        src={IMAGES.heroRooftop}
-        alt="Sportiqo's rooftop swimming pool at Cuffe Parade glowing turquoise at night with the Mumbai skyline behind"
-        width={1920}
-        height={1280}
+        src={heroGroupPhoto.url}
+        alt="Sportiqo swimmers and their instructor together in the pool at night with the city skyline behind them"
+        width={768}
+        height={1024}
         fetchPriority="high"
-        style={{ y: bgY }}
-        className="absolute inset-0 -z-20 h-[120%] w-full object-cover"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.7, ease: "easeOut" }}
+        className="absolute inset-0 -z-20 h-full w-full object-cover object-[58%_45%] md:object-[62%_44%]"
       />
-      <div
-        aria-hidden="true"
-        className="absolute inset-0 -z-10"
-        style={{
-          background:
-            "linear-gradient(180deg, color-mix(in oklab, var(--abyss) 55%, transparent) 0%, color-mix(in oklab, var(--abyss) 18%, transparent) 42%, var(--abyss) 96%)",
-        }}
-      />
+      <div aria-hidden="true" className="absolute inset-0 -z-10 bg-gradient-to-r from-foreground/95 via-foreground/60 to-foreground/10" />
+      <div aria-hidden="true" className="absolute inset-0 -z-10 bg-gradient-to-t from-foreground/80 via-transparent to-foreground/15 md:from-foreground/35" />
 
-      <motion.div
-        style={{ y: fgY, opacity: fade }}
-        className="container-x flex h-full flex-col justify-end pb-24 md:pb-32"
-      >
+      <div className="container-x flex h-full flex-col justify-end pb-24 pt-32 md:justify-center md:pb-12 md:pt-28">
         <motion.p
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.9, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          className="eyebrow"
+          transition={{ delay: 0.1, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+          className="text-xs font-bold tracking-[0.22em] text-primary-foreground uppercase"
         >
-          {BRAND.tagline}
+          SPORTIQO SWIM SCHOOL
         </motion.p>
 
         <motion.h1
-          initial={{ opacity: 0, y: 34, filter: "blur(10px)" }}
-          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-          transition={{ delay: 1.05, duration: 1, ease: [0.22, 1, 0.36, 1] }}
-          className="mt-5 max-w-4xl font-display text-[2.6rem] leading-[1.02] md:text-7xl"
+          initial={{ opacity: 0, y: 22 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.18, duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+          className="mt-4 max-w-[600px] font-sans text-5xl leading-[1.02] font-bold text-primary-foreground sm:text-6xl md:text-7xl"
         >
-          Swimming, taught the way it should be.
+          Learn to Swim.
+          <br />
+          Learn for Life.
         </motion.h1>
 
         <motion.p
-          initial={{ opacity: 0, y: 24 }}
+          initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.25, duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-          className="mt-6 max-w-xl text-base leading-relaxed text-muted-foreground md:text-lg"
+          transition={{ delay: 0.3, duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+          className="mt-5 max-w-[580px] text-sm leading-relaxed text-primary-foreground/85 sm:text-base md:text-lg"
         >
-          World-class Australian coaching for kids, adults and competitive athletes — across four
-          pools in Mumbai and Pune.
+          Structured swimming programs for Toddlers, Kids &amp; Adults — with professional coaching
+          designed to build confidence, technique and lifelong swimming skills.
         </motion.p>
 
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
+          initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.4, duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-          className="mt-9 flex flex-wrap items-center gap-3"
+          transition={{ delay: 0.42, duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+          className="mt-7 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center"
         >
           <a
-            href={waLink(PRIMARY_WA)}
+            href={trialUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="rounded-full bg-[image:var(--gradient-cta)] px-8 py-4 text-base font-semibold text-accent-foreground transition-transform duration-300 hover:scale-[1.03]"
+            className="inline-flex min-h-14 items-center justify-center rounded-md bg-accent px-7 py-4 text-sm font-bold text-accent-foreground transition-transform duration-200 hover:-translate-y-0.5"
           >
-            Book a Trial Session
+            BOOK YOUR FREE TRIAL
           </a>
           <a
-            href={waLink(PRIMARY_WA)}
+            href={trialUrl}
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Chat with Sportiqo on WhatsApp"
-            className="flex h-14 w-14 items-center justify-center rounded-full border border-border text-foreground transition-colors hover:border-primary hover:text-primary"
+            className="inline-flex min-h-14 items-center justify-center gap-2 rounded-md border border-primary-foreground/55 px-6 py-4 text-sm font-semibold text-primary-foreground transition-colors duration-200 hover:border-primary-foreground hover:bg-primary-foreground/10"
           >
             <svg viewBox="0 0 24 24" className="h-6 w-6 fill-current" aria-hidden="true">
               <path d="M17.47 14.38c-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.47-1.75-1.64-2.05-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.48-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.01-1.04 2.47s1.06 2.86 1.21 3.06c.15.2 2.09 3.2 5.07 4.49.71.3 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.75-.72 2-1.41.25-.69.25-1.28.17-1.41-.07-.13-.27-.2-.57-.35zM12.04 2.5c-5.24 0-9.5 4.26-9.5 9.5 0 1.68.44 3.31 1.28 4.75L2.5 21.5l4.87-1.28a9.46 9.46 0 0 0 4.67 1.22h.01c5.24 0 9.5-4.26 9.5-9.5s-4.27-9.44-9.51-9.44z" />
             </svg>
+            CHAT ON WHATSAPP
           </a>
         </motion.div>
-      </motion.div>
+
+        <motion.p
+          initial={{ opacity: 0, y: 14 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.5, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          className="mt-6 max-w-[600px] text-[0.64rem] leading-relaxed font-semibold tracking-[0.13em] text-primary-foreground/75 uppercase sm:text-xs"
+        >
+          TODDLERS&nbsp; • &nbsp;KIDS&nbsp; • &nbsp;ADULTS&nbsp; • &nbsp;LADIES SPECIAL BATCHES&nbsp; •
+          &nbsp;ATHLETE TRAINING
+        </motion.p>
+      </div>
 
       <WaveDivider fill="var(--abyss)" className="absolute inset-x-0 bottom-0" />
     </section>
