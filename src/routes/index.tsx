@@ -21,7 +21,7 @@ import { WaveDivider } from "@/components/site/WaveDivider";
 import { CtaBand } from "@/components/site/CtaBand";
 import heroGroupPhoto from "@/assets/sportiqo-bkc-group-hero.jpg.asset.json";
 import { GALLERY, IMAGES, PHOTOS, buildShotRows } from "@/lib/images";
-import { BRAND, LOCATIONS, PRIMARY_WA, mapEmbed, waLink } from "@/lib/site-data";
+import { LOCATIONS, mapEmbed, waLink } from "@/lib/site-data";
 
 const TITLE = "Sportiqo Swim School | Mumbai's Most Loved Swimming Pool";
 const DESC =
