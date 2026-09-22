@@ -78,18 +78,18 @@ const PILLARS = [
 
 const PROGRAMS = [
   {
-    title: "Kids",
-    age: "Ages 4–14",
-    body: "Water confidence to competitive-ready, in five graded levels with a progress card parents can actually read.",
-    image: PHOTOS.kidsKickboard,
-    alt: "Two young Sportiqo swimmers working across the pool with kickboards beside their coach",
-  },
-  {
     title: "Toddlers & Parent-Child",
     age: "6 months – 3.5 years",
     body: "Baby and toddler water familiarisation, with a parent in the water for the youngest swimmers. Songs, holds, floats and first submersions.",
     image: PHOTOS.parentChild,
     alt: "A parent holding their toddler in the pool during a Sportiqo parent-and-child class",
+  },
+  {
+    title: "Kids",
+    age: "Ages 4–14",
+    body: "Water confidence to competitive-ready, in five graded levels with a progress card parents can actually read.",
+    image: PHOTOS.kidsKickboard,
+    alt: "Two young Sportiqo swimmers working across the pool with kickboards beside their coach",
   },
   {
     title: "Adults",
@@ -201,12 +201,16 @@ function Hero() {
       <div aria-hidden="true" className="absolute inset-0 -z-10 bg-gradient-to-r from-foreground/95 via-foreground/60 to-foreground/10" />
       <div aria-hidden="true" className="absolute inset-0 -z-10 bg-gradient-to-t from-foreground/80 via-transparent to-foreground/15 md:from-foreground/35" />
 
+      <div aria-hidden="true" className="pointer-events-none absolute left-[5%] top-[24%] hidden h-32 w-32 rounded-full border border-accent/45 border-r-transparent border-b-transparent md:block" />
+      <div aria-hidden="true" className="pointer-events-none absolute left-[7%] top-[22%] hidden h-px w-36 rotate-[-14deg] bg-accent/70 md:block" />
+      <div aria-hidden="true" className="pointer-events-none absolute bottom-[16%] right-[7%] h-24 w-24 rounded-full border border-accent/35 border-l-transparent border-t-transparent" />
+
       <div className="container-x flex h-full flex-col justify-end pb-24 pt-32 md:justify-center md:pb-12 md:pt-28">
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-          className="text-xs font-bold tracking-[0.22em] text-primary-foreground uppercase"
+          className="text-xs font-bold tracking-[0.22em] text-accent uppercase"
         >
           SPORTIQO SWIM SCHOOL
         </motion.p>
@@ -215,7 +219,7 @@ function Hero() {
           initial={{ opacity: 0, y: 22 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.18, duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
-          className="mt-4 max-w-[600px] font-sans text-5xl leading-[1.02] font-bold text-primary-foreground sm:text-6xl md:text-7xl"
+          className="mt-4 max-w-[600px] font-display text-5xl leading-[0.98] font-semibold text-primary-foreground sm:text-6xl md:text-7xl"
         >
           Learn to Swim.
           <br />
@@ -236,27 +240,15 @@ function Hero() {
           initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.42, duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
-          className="mt-7 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center"
+          className="mt-7 flex items-center"
         >
           <a
             href={trialUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex min-h-14 items-center justify-center rounded-md bg-accent px-7 py-4 text-sm font-bold text-accent-foreground transition-transform duration-200 hover:-translate-y-0.5"
+            className="hero-trial-shimmer inline-flex min-h-14 items-center justify-center overflow-hidden rounded-full border border-accent/70 bg-accent px-8 py-4 text-sm font-bold text-accent-foreground shadow-[0_10px_28px_-14px_color-mix(in_oklab,var(--amber-cta)_75%,transparent)] transition-[transform,box-shadow] duration-200 hover:-translate-y-0.5 hover:shadow-[0_14px_34px_-14px_color-mix(in_oklab,var(--amber-cta)_90%,transparent)]"
           >
             BOOK YOUR FREE TRIAL
-          </a>
-          <a
-            href={trialUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Chat with Sportiqo on WhatsApp"
-            className="inline-flex min-h-14 items-center justify-center gap-2 rounded-md border border-primary-foreground/55 px-6 py-4 text-sm font-semibold text-primary-foreground transition-colors duration-200 hover:border-primary-foreground hover:bg-primary-foreground/10"
-          >
-            <svg viewBox="0 0 24 24" className="h-6 w-6 fill-current" aria-hidden="true">
-              <path d="M17.47 14.38c-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.47-1.75-1.64-2.05-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.48-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.01-1.04 2.47s1.06 2.86 1.21 3.06c.15.2 2.09 3.2 5.07 4.49.71.3 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.75-.72 2-1.41.25-.69.25-1.28.17-1.41-.07-.13-.27-.2-.57-.35zM12.04 2.5c-5.24 0-9.5 4.26-9.5 9.5 0 1.68.44 3.31 1.28 4.75L2.5 21.5l4.87-1.28a9.46 9.46 0 0 0 4.67 1.22h.01c5.24 0 9.5-4.26 9.5-9.5s-4.27-9.44-9.51-9.44z" />
-            </svg>
-            CHAT ON WHATSAPP
           </a>
         </motion.div>
 
@@ -266,7 +258,7 @@ function Hero() {
           transition={{ delay: 0.5, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
           className="mt-6 max-w-[600px] text-[0.64rem] leading-relaxed font-semibold tracking-[0.13em] text-primary-foreground/75 uppercase sm:text-xs"
         >
-          TODDLERS&nbsp; • &nbsp;KIDS&nbsp; • &nbsp;ADULTS&nbsp; • &nbsp;LADIES SPECIAL BATCHES&nbsp; •
+          TODDLERS (6 MONTHS TO 3.5 YEARS)&nbsp; • &nbsp;KIDS&nbsp; • &nbsp;ADULTS&nbsp; • &nbsp;LADIES SPECIAL BATCHES&nbsp; •
           &nbsp;ATHLETE TRAINING
         </motion.p>
       </div>

@@ -16,6 +16,8 @@ import sportiqoKidGoggles from "@/assets/sportiqo-kid-goggles.webp.asset.json";
 import sportiqoKidPoolside from "@/assets/sportiqo-kid-poolside.webp.asset.json";
 import sportiqoIndoorPool from "@/assets/sportiqo-indoor-pool.webp.asset.json";
 import sportiqoCoachLesson from "@/assets/sportiqo-coach-lesson.webp.asset.json";
+import sportiqoAdultsIndoor from "@/assets/sportiqo-adults-indoor.jpg.asset.json";
+import sportiqoAthletesAwards from "@/assets/sportiqo-athletes-awards.jpg.asset.json";
 
 /** Real photography from our pools. */
 export const PHOTOS = {
@@ -37,6 +39,8 @@ export const PHOTOS = {
   kidPoolside: sportiqoKidPoolside.url,
   indoorPool: sportiqoIndoorPool.url,
   coachLesson: sportiqoCoachLesson.url,
+  adultsIndoor: sportiqoAdultsIndoor.url,
+  athletesAwards: sportiqoAthletesAwards.url,
 };
 
 
@@ -44,9 +48,9 @@ export const IMAGES = {
   heroRooftop: PHOTOS.indoorPool,
   kidUnderwater: PHOTOS.kidGoggles,
   coachKids: PHOTOS.coachLesson,
-  competitive: PHOTOS.coachLesson,
-  adults: PHOTOS.kidPoolside,
-  awards: PHOTOS.kidGoggles,
+  competitive: PHOTOS.athletesAwards,
+  adults: PHOTOS.adultsIndoor,
+  awards: PHOTOS.athletesAwards,
   caustics: PHOTOS.indoorPool,
   poolPune: PHOTOS.indoorPool,
   ...PHOTOS,

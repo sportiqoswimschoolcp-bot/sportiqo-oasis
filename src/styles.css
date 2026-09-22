@@ -274,6 +274,67 @@
   }
 }
 
+@utility hero-trial-shimmer {
+  position: relative;
+  isolation: isolate;
+  &::after {
+    content: "";
+    position: absolute;
+    inset: -45% auto -45% -45%;
+    width: 34%;
+    transform: skewX(-20deg);
+    background: linear-gradient(90deg, transparent, color-mix(in oklab, var(--accent-foreground) 55%, transparent), transparent);
+    animation: hero-button-shimmer 3.2s ease-in-out infinite;
+  }
+}
+
+@keyframes hero-button-shimmer {
+  0%, 55% { left: -45%; }
+  85%, 100% { left: 125%; }
+}
+
+@utility sportiqo-loader {
+  position: relative;
+  width: 5.5em;
+  height: 5.5em;
+  font-size: 16px;
+  &::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 4px;
+    height: 100%;
+    background: var(--primary-foreground);
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0.2em;
+    bottom: 0.18em;
+    width: 1em;
+    height: 1em;
+    border-radius: 15%;
+    background: var(--amber-cta);
+    animation: rolling-rock 2.5s cubic-bezier(0.79, 0, 0.47, 0.97) infinite;
+  }
+}
+
+@keyframes rolling-rock {
+  0% { transform: translate(0, -1em) rotate(-45deg); }
+  5% { transform: translate(0, -1em) rotate(-50deg); }
+  20% { transform: translate(1em, -2em) rotate(47deg); }
+  25% { transform: translate(1em, -2em) rotate(45deg); }
+  30% { transform: translate(1em, -2em) rotate(40deg); }
+  45% { transform: translate(2em, -3em) rotate(137deg); }
+  50% { transform: translate(2em, -3em) rotate(135deg); }
+  55% { transform: translate(2em, -3em) rotate(130deg); }
+  70% { transform: translate(3em, -4em) rotate(217deg); }
+  75% { transform: translate(3em, -4em) rotate(220deg); }
+  100% { transform: translate(0, -1em) rotate(-225deg); }
+}
+
 @keyframes float-slow {
   0%,
   100% {
