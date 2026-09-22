@@ -41,20 +41,6 @@ const TRACKS = [
     ],
   },
   {
-    title: "Parent & Child",
-    age: "6 months – 4 years, in-water parent",
-    image: PHOTOS.babyClass,
-    alt: "Parents and toddlers together in the pool during a Sportiqo parent-and-child group class",
-    intro:
-      "One parent in the water, one coach on the group, and a class built on songs, routines and repetition. Parents learn the exact holds, cues and safety habits so the progress continues on family holidays — not only on Saturday mornings.",
-    levels: [
-      ["Holds & handling", "Cradle, hip and shoulder holds taught to the parent first."],
-      ["Cue-and-submerge", "A consistent verbal cue before every gentle submersion."],
-      ["Songs & routines", "Predictable structure so toddlers know exactly what comes next."],
-      ["Water safety for families", "Reach, roll, float and the rules that matter around home pools."],
-    ],
-  },
-  {
     title: "Kids",
     age: "Ages 4–14",
     image: PHOTOS.kidsCoach,
@@ -67,6 +53,20 @@ const TRACKS = [
       ["Level 3 · Freestyle & backstroke", "Side breathing, straight-line freestyle, backstroke basics."],
       ["Level 4 · Four strokes", "Breaststroke and butterfly introduced, 50m continuous swims."],
       ["Level 5 · Pre-competitive", "Turns, dives, pace awareness, squad trial readiness."],
+    ],
+  },
+  {
+    title: "Parent & Child",
+    age: "6 months – 4 years, in-water parent",
+    image: PHOTOS.babyClass,
+    alt: "Parents and toddlers together in the pool during a Sportiqo parent-and-child group class",
+    intro:
+      "One parent in the water, one coach on the group, and a class built on songs, routines and repetition. Parents learn the exact holds, cues and safety habits so the progress continues on family holidays — not only on Saturday mornings.",
+    levels: [
+      ["Holds & handling", "Cradle, hip and shoulder holds taught to the parent first."],
+      ["Cue-and-submerge", "A consistent verbal cue before every gentle submersion."],
+      ["Songs & routines", "Predictable structure so toddlers know exactly what comes next."],
+      ["Water safety for families", "Reach, roll, float and the rules that matter around home pools."],
     ],
   },
   {
