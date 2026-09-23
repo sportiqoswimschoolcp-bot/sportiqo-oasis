@@ -28,17 +28,21 @@ export const Route = createFileRoute("/programs")({
 
 const TRACKS = [
   {
-    title: "Toddlers",
-    age: "6 months – 3.5 years",
+    title: "Toddler/Parent-Child Program",
+    age: "6 months – 4 years",
     image: PHOTOS.toddlerLift,
     alt: "A Sportiqo coach lifting a smiling toddler out of the water during a baby swim class",
     intro:
-      "Water familiarisation for our youngest swimmers, starting from six months. Warm water, tiny groups and short sessions built around a baby's attention span — never around a syllabus. The goal is a child who is happy in water, not one who can swim a length.",
+      "Water familiarisation for our youngest swimmers, starting from six months, with a parent in the water for the earliest stages. Warm water, tiny groups and short sessions use songs, routines and repetition to build comfort, confidence and family water-safety habits.",
     levels: [
       ["Water babies · 6–14 months", "Skin-to-skin holds, gentle pours, first supported floats."],
       ["Splashers · 14 months–2 years", "Cued submersions, back floats, pool-edge holds and turns."],
       ["Movers · 2–3.5 years", "Assisted kicking, reach-and-grab safety skills, jumping in on cue."],
       ["Warm-water policy", "Water held at 30–32°C, sessions capped at 30 minutes."],
+      ["Holds & handling", "Cradle, hip and shoulder holds taught to the parent first."],
+      ["Cue-and-submerge", "A consistent verbal cue before every gentle submersion."],
+      ["Songs & routines", "Predictable structure so toddlers know exactly what comes next."],
+      ["Water safety for families", "Reach, roll, float and the rules that matter around home pools."],
     ],
   },
   {
@@ -54,20 +58,6 @@ const TRACKS = [
       ["Level 3 · Freestyle & backstroke", "Side breathing, straight-line freestyle, backstroke basics."],
       ["Level 4 · Four strokes", "Breaststroke and butterfly introduced, 50m continuous swims."],
       ["Level 5 · Pre-competitive", "Turns, dives, pace awareness, squad trial readiness."],
-    ],
-  },
-  {
-    title: "Parent & Child",
-    age: "6 months – 4 years, in-water parent",
-    image: PHOTOS.babyClass,
-    alt: "Parents and toddlers together in the pool during a Sportiqo parent-and-child group class",
-    intro:
-      "One parent in the water, one coach on the group, and a class built on songs, routines and repetition. Parents learn the exact holds, cues and safety habits so the progress continues on family holidays — not only on Saturday mornings.",
-    levels: [
-      ["Holds & handling", "Cradle, hip and shoulder holds taught to the parent first."],
-      ["Cue-and-submerge", "A consistent verbal cue before every gentle submersion."],
-      ["Songs & routines", "Predictable structure so toddlers know exactly what comes next."],
-      ["Water safety for families", "Reach, roll, float and the rules that matter around home pools."],
     ],
   },
   {
@@ -105,8 +95,8 @@ function Programs() {
     <>
       <PageHero
         eyebrow="Programs"
-        title="Five tracks. Each one taken seriously."
-        subtitle="From six-month-olds in a parent's arms to squad swimmers chasing state times, every track follows its own syllabus — because a toddler learning to float and a fourteen-year-old on a taper need very different mornings."
+        title="Multiple Tracks, Each One Taken Seriously"
+        subtitle="From six-month-olds in a parent's arms to squad swimmers chasing state times, every programme follows its own syllabus — because a toddler learning to float and a fourteen-year-old on a taper need very different mornings."
         image={IMAGES.caustics}
         imageAlt="Sunlight caustics shimmering across clear turquoise swimming pool water"
       />
