@@ -19,7 +19,7 @@ import { Reveal } from "@/components/site/Reveal";
 import { Marquee } from "@/components/site/Marquee";
 import { WaveDivider } from "@/components/site/WaveDivider";
 import { CtaBand } from "@/components/site/CtaBand";
-import heroGroupPhoto from "@/assets/sportiqo-bkc-group-hero.jpg.asset.json";
+import heroGroupPhoto from "@/assets/sportiqo-indoor-group-hero.jpg.asset.json";
 import { GALLERY, IMAGES, PHOTOS, buildShotRows } from "@/lib/images";
 import { LOCATIONS, mapEmbed, waLink } from "@/lib/site-data";
 
@@ -79,7 +79,7 @@ const PILLARS = [
 
 const PROGRAMS = [
   {
-    title: "Toddlers & Parent-Child",
+    title: "Toddler/Parent-Child Program",
     age: "6 months – 3.5 years",
     body: "Baby and toddler water familiarisation, with a parent in the water for the youngest swimmers. Songs, holds, floats and first submersions.",
     image: PHOTOS.parentChild,
@@ -156,12 +156,14 @@ const TESTIMONIALS = [
 
 const CREDENTIALS = [
   "Australian Learn-To-Swim Certified Coaches",
-  "MIT World Peace University Partnership",
-  "Khade Aquatics Affiliation",
+  "Multiple Schools and University Partnerships",
+  "Collaboration with Khade Aquatics",
   "Certified Pool Lifeguards On Deck",
-  "District & State Meet Medallists",
+  "National and International Medalists",
   "Swimming Federation Aligned Syllabus",
 ];
+
+const EXPANSION_CITIES = ["Navi Mumbai", "Bangalore", "Hyderabad", "Delhi", "More Cities"];
 
 function Home() {
   return (
@@ -191,13 +193,13 @@ function Hero() {
       <motion.img
         src={heroGroupPhoto.url}
         alt="Sportiqo swimmers and their instructor together in the pool at night with the city skyline behind them"
-        width={768}
-        height={1024}
+        width={1280}
+        height={960}
         fetchPriority="high"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.7, ease: "easeOut" }}
-        className="absolute inset-0 -z-20 h-full w-full object-cover object-[58%_45%] md:object-[62%_44%]"
+        className="absolute inset-0 -z-20 h-full w-full object-cover object-[52%_center] md:object-center"
       />
       <div aria-hidden="true" className="absolute inset-0 -z-10 bg-gradient-to-r from-foreground/95 via-foreground/60 to-foreground/10" />
       <div aria-hidden="true" className="absolute inset-0 -z-10 bg-gradient-to-t from-foreground/80 via-transparent to-foreground/15 md:from-foreground/35" />
@@ -213,7 +215,7 @@ function Hero() {
           transition={{ delay: 0.1, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
           className="text-xs font-bold tracking-[0.22em] text-accent uppercase"
         >
-          SPORTIQO SWIM SCHOOL
+          SPORTIQO
         </motion.p>
 
         <motion.h1
@@ -335,7 +337,7 @@ function ImageWall() {
         <Reveal>
           <p className="eyebrow">Life at the pool</p>
           <h2 className="mt-4 max-w-2xl font-display text-3xl leading-tight md:text-5xl">
-            Four decks. Thousands of mornings. One standard.
+            Multiple Decks
           </h2>
         </Reveal>
       </div>
@@ -373,7 +375,7 @@ function ProgramsOverview() {
         <Reveal>
           <p className="eyebrow">Programs</p>
           <h2 className="mt-4 max-w-3xl font-display text-3xl leading-tight md:text-5xl">
-            Four tracks. Each one taken seriously.
+            Multiple Tracks, Each One Taken Seriously
           </h2>
         </Reveal>
 
@@ -428,7 +430,7 @@ function LocationsSection() {
         <Reveal>
           <p className="eyebrow">Locations</p>
           <h2 className="mt-4 max-w-3xl font-display text-3xl leading-tight md:text-5xl">
-            Four pools across Mumbai and Pune.
+            Mumbai today. Navi Mumbai, Bangalore, Hyderabad, Delhi, and more cities coming soon.
           </h2>
         </Reveal>
 
@@ -476,7 +478,7 @@ function LocationsSection() {
                 >
                   <MapPin className="h-5 w-5 text-primary" aria-hidden="true" />
                   <h3 className="mt-4 font-display text-xl">
-                    {l.name}, {l.city}
+                    {l.slug === "bkc" ? "DSC / BKC" : l.name}
                   </h3>
                   <p className="mt-2 flex-1 text-sm leading-relaxed text-muted-foreground">
                     {l.oneLiner}
@@ -513,8 +515,8 @@ function LocationsSection() {
             );
           })}
 
-          {[0, 1].map((i) => (
-            <Reveal key={`soon-${i}`} delay={(LOCATIONS.length + i) * 0.07}>
+          {EXPANSION_CITIES.map((city, i) => (
+            <Reveal key={city} delay={(LOCATIONS.length + i) * 0.07}>
               <article className="relative flex h-full min-h-[190px] flex-col items-center justify-center overflow-hidden rounded-2xl border border-dashed border-destructive/50 bg-[color-mix(in_oklab,var(--destructive)_5%,transparent)] p-6 text-center transition-transform duration-500 ease-[var(--ease-swim)] hover:-translate-y-2">
                 <span
                   aria-hidden="true"
@@ -522,7 +524,7 @@ function LocationsSection() {
                 >
                   ?
                 </span>
-                <h3 className="mt-4 font-display text-lg">New Centre</h3>
+                <h3 className="mt-4 font-display text-lg">{city}</h3>
                 <p className="mt-1 text-xs tracking-[0.28em] text-destructive uppercase">
                   Coming Soon
                 </p>
