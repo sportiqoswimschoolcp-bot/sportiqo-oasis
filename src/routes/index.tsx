@@ -430,7 +430,7 @@ function LocationsSection() {
         <Reveal>
           <p className="eyebrow">Locations</p>
           <h2 className="mt-4 max-w-3xl font-display text-3xl leading-tight md:text-5xl">
-            Mumbai today. More cities coming soon.
+            Mumbai today. Navi Mumbai, Bangalore, Hyderabad, Delhi, and more cities coming soon.
           </h2>
         </Reveal>
 
@@ -478,7 +478,7 @@ function LocationsSection() {
                 >
                   <MapPin className="h-5 w-5 text-primary" aria-hidden="true" />
                   <h3 className="mt-4 font-display text-xl">
-                    {l.slug === "bkc" ? "DSC / BKC" : `${l.name}, ${l.city}`}
+                    {l.slug === "bkc" ? "DSC / BKC" : l.name}
                   </h3>
                   <p className="mt-2 flex-1 text-sm leading-relaxed text-muted-foreground">
                     {l.oneLiner}

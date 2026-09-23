@@ -6,7 +6,7 @@ import { IMAGES, PHOTOS } from "@/lib/images";
 
 const TITLE = "Swim Programs: Toddlers, Kids, Adults & Athletes | Sportiqo Swim School";
 const DESC =
-  "Five structured tracks: baby and toddler classes from 6 months, parent-and-child sessions, kids learn-to-swim, adult beginner and fitness swimming, and competitive squad training.";
+  "Structured swimming programmes for toddlers with parents, kids, adult beginners and fitness swimmers, and competitive athletes.";
 
 export const Route = createFileRoute("/programs")({
   head: () => ({
