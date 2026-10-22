@@ -126,6 +126,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
   errorComponent: ErrorComponent,
 });
 
+// New router types require a lazy component; wrap the inline error view.
+const ErrorComponent = lazy(async () => ({ default: ErrorComponentView }));
+
 function RootShell({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
