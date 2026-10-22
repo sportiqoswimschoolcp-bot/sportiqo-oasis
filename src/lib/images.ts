@@ -18,6 +18,12 @@ import sportiqoIndoorPool from "@/assets/sportiqo-indoor-pool.webp.asset.json";
 import sportiqoCoachLesson from "@/assets/sportiqo-coach-lesson.webp.asset.json";
 import sportiqoAdultsIndoor from "@/assets/sportiqo-adults-indoor.jpg.asset.json";
 import sportiqoAthletesAwards from "@/assets/sportiqo-athletes-awards.jpg.asset.json";
+import testimonialSinghPreet from "@/assets/testimonial-singh-preet.jpg.asset.json";
+import testimonialParentToddler from "@/assets/testimonial-parent-toddler.jpg.asset.json";
+import testimonialKidBackstroke from "@/assets/testimonial-kid-backstroke.jpg.asset.json";
+import testimonialKidFreestyle from "@/assets/testimonial-kid-freestyle.jpg.asset.json";
+import testimonialKidBackfloat from "@/assets/testimonial-kid-backfloat.jpg.asset.json";
+import testimonialKidRacer from "@/assets/testimonial-kid-racer.jpg.asset.json";
 
 /** Real photography from our pools. */
 export const PHOTOS = {
@@ -157,3 +163,13 @@ export function buildShotRows(rows: number, perRow: number, pool: Shot[] = GALLE
   );
 
 }
+
+/** Faces behind the real testimonials on the homepage. */
+export const TESTIMONIAL_PHOTOS = {
+  singhPreet: testimonialSinghPreet.url,
+  parentToddler: testimonialParentToddler.url,
+  kidBackstroke: testimonialKidBackstroke.url,
+  kidFreestyle: testimonialKidFreestyle.url,
+  kidBackfloat: testimonialKidBackfloat.url,
+  kidRacer: testimonialKidRacer.url,
+};

@@ -20,7 +20,7 @@ import { Marquee } from "@/components/site/Marquee";
 import { WaveDivider } from "@/components/site/WaveDivider";
 import { CtaBand } from "@/components/site/CtaBand";
 import heroGroupPhoto from "@/assets/sportiqo-indoor-group-hero.jpg.asset.json";
-import { GALLERY, IMAGES, PHOTOS, buildShotRows } from "@/lib/images";
+import { GALLERY, IMAGES, PHOTOS, TESTIMONIAL_PHOTOS, buildShotRows } from "@/lib/images";
 import { LOCATIONS, mapEmbed, waLink } from "@/lib/site-data";
 
 const TITLE = "Sportiqo Swim School | Mumbai's Most Loved Swimming Pool";
@@ -111,45 +111,45 @@ const PROGRAMS = [
 const TESTIMONIALS = [
   {
     quote:
-      "My daughter went from refusing to put her face in the water to swimming 50 metres unaided in one term. The coaches never rushed her once.",
-    name: "Anuja M.",
-    detail: "Parent · Prabhadevi",
+      "My daughter started swimming here as a hobby, and over time she grew towards competitive swimming. She is 14 now and preparing for her nationals with Sportiqo and Khade Aquatics — it is not just the strokes, but proper stroke correction, technique and care. Swimming here has taught her what discipline and hard work can achieve. To be here is to be at the best place when it comes to swimming.",
+    name: "Singh Preet",
+    detail: "Father of a 14-year-old competitive swimmer",
+    photo: TESTIMONIAL_PHOTOS.singhPreet,
   },
   {
     quote:
-      "I learned to swim at 41 on a rooftop looking at the Mumbai skyline. Honestly, it stopped feeling like a class and started feeling like the best hour of my week.",
-    name: "Rohan D.",
-    detail: "Adult beginner · Cuffe Parade",
+      "My experience with Sportiqo has been superb. I stay in Byculla — a 30-minute commute by car — but I still make the trip because compared to other pools this one is much cleaner, uses less chlorine and is temperature-controlled, which works for my son. I enrolled him when he was two; he is three now and already swims and floats well. All the credit goes to the coaches here — Francis sir, Aniket sir and Ritik sir.",
+    name: "Sportiqo parent · Byculla",
+    detail: "Father of a 3-year-old swimmer",
+    photo: TESTIMONIAL_PHOTOS.parentToddler,
   },
   {
     quote:
-      "The squad programme is genuinely serious. Timing sets, video feedback, a real meet calendar. My son dropped four seconds off his 100 free in a season.",
-    name: "Shweta K.",
-    detail: "Parent · Kothrud, Pune",
+      "I used to be scared to put my face in the water. My coach stayed with me until I wasn't. Now backstroke is my favourite stroke, and I count the days till my next class.",
+    name: "Sportiqo kid · backstroke fan",
+    detail: "Kids programme",
+    photo: TESTIMONIAL_PHOTOS.kidBackstroke,
   },
   {
     quote:
-      "We started the parent-and-child batch when our son was eleven months old. He now floats on his back and giggles through it. The coaches are unbelievably patient with babies.",
-    name: "Farhan & Zoya S.",
-    detail: "Parent-child batch · Prabhadevi",
+      "My coach taught me to blow bubbles first, then floating, then freestyle. I can swim a full length all by myself now, and my breathing gets better every week.",
+    name: "Sportiqo kid · freestyle in progress",
+    detail: "Kids programme",
+    photo: TESTIMONIAL_PHOTOS.kidFreestyle,
   },
   {
     quote:
-      "I had a genuine fear of deep water for thirty years. Nobody made me feel silly about it. Six weeks in, I swam a full length without stopping.",
-    name: "Meghana R.",
-    detail: "Adult beginner · District Sports Club, BKC",
+      "Swimming class is the best part of my day. We play games in the warm-up, and last week I floated on my back all by myself for the first time.",
+    name: "Sportiqo kid · new back-floater",
+    detail: "Kids programme",
+    photo: TESTIMONIAL_PHOTOS.kidBackfloat,
   },
   {
     quote:
-      "What sold us was the ratio. Four kids to a coach means someone is actually watching your child every single minute — you can see it from the deck.",
-    name: "Arjun T.",
-    detail: "Parent · Cuffe Parade",
-  },
-  {
-    quote:
-      "The water is clean, the deck is safe and the batches start on time. As a working parent, that reliability is worth as much as the coaching.",
-    name: "Priya N.",
-    detail: "Parent · Kothrud, Pune",
+      "I love how clear the water is here. My coach says my kick is getting stronger every batch. One day I want to swim in a real race, like the big kids.",
+    name: "Sportiqo kid · future racer",
+    detail: "Kids programme",
+    photo: TESTIMONIAL_PHOTOS.kidRacer,
   },
 ];
 
@@ -588,9 +588,12 @@ function Testimonials() {
                 </motion.blockquote>
               </AnimatePresence>
               <figcaption className="mt-6 grid grid-cols-[auto_minmax(0,1fr)] items-center gap-3 border-t border-border pt-5 sm:flex sm:gap-4 md:mt-8">
-                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[image:var(--gradient-cta)] font-display text-base text-accent-foreground md:h-11 md:w-11">
-                  {t.name.charAt(0)}
-                </span>
+                <img
+                  src={t.photo}
+                  alt={`Photo of ${t.name}`}
+                  loading="lazy"
+                  className="h-10 w-10 shrink-0 rounded-full object-cover object-[50%_35%] md:h-11 md:w-11"
+                />
                 <span className="min-w-0">
                   <span className="block truncate text-sm font-semibold md:text-base">
                     {t.name}
@@ -648,15 +651,23 @@ function Testimonials() {
                     type="button"
                     onClick={() => setActive(i)}
                     aria-pressed={i === active}
-                    className={`w-full rounded-2xl border px-5 py-4 text-left transition-all duration-500 ease-[var(--ease-swim)] ${
+                    className={`flex w-full items-center gap-3 rounded-2xl border px-4 py-3 text-left transition-all duration-500 ease-[var(--ease-swim)] ${
                       i === active
                         ? "translate-x-1 border-primary bg-[color-mix(in_oklab,var(--primary)_8%,transparent)]"
                         : "border-border hover:translate-x-1 hover:border-primary/50"
                     }`}
                   >
-                    <span className="block truncate text-sm font-semibold">{item.name}</span>
-                    <span className="block truncate text-xs text-muted-foreground">
-                      {item.detail}
+                    <img
+                      src={item.photo}
+                      alt=""
+                      loading="lazy"
+                      className="h-9 w-9 shrink-0 rounded-full object-cover object-[50%_35%]"
+                    />
+                    <span className="min-w-0">
+                      <span className="block truncate text-sm font-semibold">{item.name}</span>
+                      <span className="block truncate text-xs text-muted-foreground">
+                        {item.detail}
+                      </span>
                     </span>
                   </button>
                 </li>
