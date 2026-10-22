@@ -9,36 +9,21 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
-import { Route as ProgramsRouteImport } from './routes/programs'
-import { Route as GalleryRouteImport } from './routes/gallery'
-import { Route as ContactRouteImport } from './routes/contact'
-import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AboutRouteImport } from './routes/about'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as GalleryRouteImport } from './routes/gallery'
+import { Route as ProgramsRouteImport } from './routes/programs'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as LocationsIndexRouteImport } from './routes/locations.index'
-import { Route as LocationsPrabhadeviRouteImport } from './routes/locations.prabhadevi'
-import { Route as LocationsKothrudPuneRouteImport } from './routes/locations.kothrud-pune'
-import { Route as LocationsCuffeParadeRouteImport } from './routes/locations.cuffe-parade'
 import { Route as LocationsBkcRouteImport } from './routes/locations.bkc'
+import { Route as LocationsCuffeParadeRouteImport } from './routes/locations.cuffe-parade'
+import { Route as LocationsKothrudPuneRouteImport } from './routes/locations.kothrud-pune'
+import { Route as LocationsPrabhadeviRouteImport } from './routes/locations.prabhadevi'
 
-const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
-  id: '/sitemap.xml',
-  path: '/sitemap.xml',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ProgramsRoute = ProgramsRouteImport.update({
-  id: '/programs',
-  path: '/programs',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const GalleryRoute = GalleryRouteImport.update({
-  id: '/gallery',
-  path: '/gallery',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ContactRoute = ContactRouteImport.update({
-  id: '/contact',
-  path: '/contact',
+const IndexRoute = IndexRouteImport.update({
+  id: '/',
+  path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AboutRoute = AboutRouteImport.update({
@@ -46,9 +31,24 @@ const AboutRoute = AboutRouteImport.update({
   path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GalleryRoute = GalleryRouteImport.update({
+  id: '/gallery',
+  path: '/gallery',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProgramsRoute = ProgramsRouteImport.update({
+  id: '/programs',
+  path: '/programs',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LocationsIndexRoute = LocationsIndexRouteImport.update({
@@ -56,14 +56,9 @@ const LocationsIndexRoute = LocationsIndexRouteImport.update({
   path: '/locations/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const LocationsPrabhadeviRoute = LocationsPrabhadeviRouteImport.update({
-  id: '/locations/prabhadevi',
-  path: '/locations/prabhadevi',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const LocationsKothrudPuneRoute = LocationsKothrudPuneRouteImport.update({
-  id: '/locations/kothrud-pune',
-  path: '/locations/kothrud-pune',
+const LocationsBkcRoute = LocationsBkcRouteImport.update({
+  id: '/locations/bkc',
+  path: '/locations/bkc',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LocationsCuffeParadeRoute = LocationsCuffeParadeRouteImport.update({
@@ -71,9 +66,14 @@ const LocationsCuffeParadeRoute = LocationsCuffeParadeRouteImport.update({
   path: '/locations/cuffe-parade',
   getParentRoute: () => rootRouteImport,
 } as any)
-const LocationsBkcRoute = LocationsBkcRouteImport.update({
-  id: '/locations/bkc',
-  path: '/locations/bkc',
+const LocationsKothrudPuneRoute = LocationsKothrudPuneRouteImport.update({
+  id: '/locations/kothrud-pune',
+  path: '/locations/kothrud-pune',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LocationsPrabhadeviRoute = LocationsPrabhadeviRouteImport.update({
+  id: '/locations/prabhadevi',
+  path: '/locations/prabhadevi',
   getParentRoute: () => rootRouteImport,
 } as any)
 
@@ -175,32 +175,11 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/sitemap.xml': {
-      id: '/sitemap.xml'
-      path: '/sitemap.xml'
-      fullPath: '/sitemap.xml'
-      preLoaderRoute: typeof SitemapDotxmlRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/programs': {
-      id: '/programs'
-      path: '/programs'
-      fullPath: '/programs'
-      preLoaderRoute: typeof ProgramsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/gallery': {
-      id: '/gallery'
-      path: '/gallery'
-      fullPath: '/gallery'
-      preLoaderRoute: typeof GalleryRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/contact': {
-      id: '/contact'
-      path: '/contact'
-      fullPath: '/contact'
-      preLoaderRoute: typeof ContactRouteImport
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/about': {
@@ -210,11 +189,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/gallery': {
+      id: '/gallery'
+      path: '/gallery'
+      fullPath: '/gallery'
+      preLoaderRoute: typeof GalleryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/programs': {
+      id: '/programs'
+      path: '/programs'
+      fullPath: '/programs'
+      preLoaderRoute: typeof ProgramsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/locations/': {
@@ -224,18 +224,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LocationsIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/locations/prabhadevi': {
-      id: '/locations/prabhadevi'
-      path: '/locations/prabhadevi'
-      fullPath: '/locations/prabhadevi'
-      preLoaderRoute: typeof LocationsPrabhadeviRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/locations/kothrud-pune': {
-      id: '/locations/kothrud-pune'
-      path: '/locations/kothrud-pune'
-      fullPath: '/locations/kothrud-pune'
-      preLoaderRoute: typeof LocationsKothrudPuneRouteImport
+    '/locations/bkc': {
+      id: '/locations/bkc'
+      path: '/locations/bkc'
+      fullPath: '/locations/bkc'
+      preLoaderRoute: typeof LocationsBkcRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/locations/cuffe-parade': {
@@ -245,11 +238,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LocationsCuffeParadeRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/locations/bkc': {
-      id: '/locations/bkc'
-      path: '/locations/bkc'
-      fullPath: '/locations/bkc'
-      preLoaderRoute: typeof LocationsBkcRouteImport
+    '/locations/kothrud-pune': {
+      id: '/locations/kothrud-pune'
+      path: '/locations/kothrud-pune'
+      fullPath: '/locations/kothrud-pune'
+      preLoaderRoute: typeof LocationsKothrudPuneRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/locations/prabhadevi': {
+      id: '/locations/prabhadevi'
+      path: '/locations/prabhadevi'
+      fullPath: '/locations/prabhadevi'
+      preLoaderRoute: typeof LocationsPrabhadeviRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
