@@ -113,7 +113,7 @@ const TESTIMONIALS = [
     name: "Singh Preet",
     detail: "Father of a 14-year-old competitive swimmer",
     photo: TESTIMONIAL_PHOTOS.singhPreet,
-    pos: "50% 35%",
+    pos: "46% 50%",
   },
   {
     quote:
@@ -121,7 +121,7 @@ const TESTIMONIALS = [
     name: "Sportiqo parent · Byculla",
     detail: "Father of a 3-year-old swimmer",
     photo: TESTIMONIAL_PHOTOS.parentToddler,
-    pos: "62% 30%",
+    pos: "63% 45%",
   },
   {
     quote:
