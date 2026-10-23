@@ -163,7 +163,7 @@ const CREDENTIALS = [
   "Swimming Federation Aligned Syllabus",
 ];
 
-const EXPANSION_CITIES = ["Navi Mumbai", "Bangalore", "Hyderabad", "Delhi", "More Cities"];
+const EXPANSION_CITIES = ["Mumbai", "Bangalore", "Hyderabad", "Delhi", "More Cities"];
 
 function Home() {
   return (
