@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useEffect, useRef, useState } from "react";
-import { AnimatePresence, motion } from "motion/react";
+import { useRef, useState } from "react";
+import { motion } from "motion/react";
 import {
   ShieldCheck,
   Waves,
@@ -9,8 +9,6 @@ import {
   Phone,
   MapPin,
   Quote,
-  ChevronLeft,
-  ChevronRight,
 } from "lucide-react";
 
 import { GoogleMapsIcon } from "@/components/site/GoogleMapsIcon";
@@ -111,17 +109,19 @@ const PROGRAMS = [
 const TESTIMONIALS = [
   {
     quote:
-      "My daughter started swimming here as a hobby, and over time she grew towards competitive swimming. She is 14 now and preparing for her nationals with Sportiqo and Khade Aquatics — it is not just the strokes, but proper stroke correction, technique and care. Swimming here has taught her what discipline and hard work can achieve. To be here is to be at the best place when it comes to swimming.",
+      "My daughter began swimming here as a hobby — at 14 she is now preparing for her nationals with Sportiqo and Khade Aquatics. Not just strokes: proper stroke correction, technique and care. To be here is to be at the best place for swimming.",
     name: "Singh Preet",
     detail: "Father of a 14-year-old competitive swimmer",
     photo: TESTIMONIAL_PHOTOS.singhPreet,
+    pos: "46% 50%",
   },
   {
     quote:
-      "My experience with Sportiqo has been superb. I stay in Byculla — a 30-minute commute by car — but I still make the trip because compared to other pools this one is much cleaner, uses less chlorine and is temperature-controlled, which works for my son. I enrolled him when he was two; he is three now and already swims and floats well. All the credit goes to the coaches here — Francis sir, Aniket sir and Ritik sir.",
+      "I stay in Byculla, a 30-minute drive away, but this pool is cleaner, low-chlorine and temperature-controlled. My son enrolled at two; at three he swims and floats. All credit to Francis, Aniket and Ritik sir.",
     name: "Sportiqo parent · Byculla",
     detail: "Father of a 3-year-old swimmer",
     photo: TESTIMONIAL_PHOTOS.parentToddler,
+    pos: "63% 45%",
   },
   {
     quote:
@@ -163,7 +163,7 @@ const CREDENTIALS = [
   "Swimming Federation Aligned Syllabus",
 ];
 
-const EXPANSION_CITIES = ["Navi Mumbai", "Bangalore", "Hyderabad", "Delhi", "More Cities"];
+const EXPANSION_CITIES = ["Mumbai", "Bangalore", "Hyderabad", "Delhi", "More Cities"];
 
 function Home() {
   return (
@@ -430,7 +430,7 @@ function LocationsSection() {
         <Reveal>
           <p className="eyebrow">Locations</p>
           <h2 className="mt-4 max-w-3xl font-display text-3xl leading-tight md:text-5xl">
-            Mumbai today. Navi Mumbai, Bangalore, Hyderabad, Delhi, and more cities coming soon.
+            Mumbai and Pune today. Navi Mumbai, Bangalore, Hyderabad, Delhi, and more cities coming soon.
           </h2>
         </Reveal>
 
@@ -538,20 +538,8 @@ function LocationsSection() {
 }
 
 function Testimonials() {
-  const [active, setActive] = useState(0);
-  const [paused, setPaused] = useState(false);
-  const total = TESTIMONIALS.length;
-
-  useEffect(() => {
-    if (paused) return;
-    const id = window.setInterval(() => setActive((i) => (i + 1) % total), 5200);
-    return () => window.clearInterval(id);
-  }, [paused, total]);
-
-  const t = TESTIMONIALS[active];
-
   return (
-    <section className="aurora-white py-20 md:py-32">
+    <section className="aurora-white overflow-hidden py-20 md:py-32">
       <div className="container-x">
         <Reveal>
           <p className="eyebrow">In their words</p>
@@ -559,124 +547,38 @@ function Testimonials() {
             Families who stayed.
           </h2>
         </Reveal>
+      </div>
 
-        <div
-          className="mt-10 grid gap-6 lg:grid-cols-[1.3fr_1fr] lg:gap-10"
-          onMouseEnter={() => setPaused(true)}
-          onMouseLeave={() => setPaused(false)}
-          onTouchStart={() => setPaused(true)}
-        >
-          <Reveal>
-            <figure className="surface-card relative flex h-full flex-col overflow-hidden rounded-3xl p-6 sm:p-8 md:p-12">
-              <span
-                aria-hidden="true"
-                className="pointer-events-none absolute -top-10 right-0 font-display text-[7rem] leading-none text-primary/10 select-none md:-top-14 md:text-[12rem]"
-              >
-                “
-              </span>
-              <Quote className="h-6 w-6 shrink-0 text-primary/70 md:h-7 md:w-7" aria-hidden="true" />
-              <AnimatePresence mode="wait">
-                <motion.blockquote
-                  key={t.name}
-                  initial={{ opacity: 0, y: 16 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -12 }}
-                  transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-                  className="mt-5 min-h-[9.5rem] font-display text-lg leading-relaxed sm:min-h-[8rem] sm:text-xl md:min-h-[10rem] md:text-3xl"
-                >
-                  {t.quote}
-                </motion.blockquote>
-              </AnimatePresence>
-              <figcaption className="mt-6 grid grid-cols-[auto_minmax(0,1fr)] items-center gap-3 border-t border-border pt-5 sm:flex sm:gap-4 md:mt-8">
+      <Reveal delay={0.1}>
+        <Marquee duration={70} className="mt-12">
+          {TESTIMONIALS.map((t) => (
+            <article
+              key={t.name}
+              className="mx-3 flex w-[260px] shrink-0 flex-col overflow-hidden rounded-3xl border border-border bg-card shadow-sm sm:w-[300px]"
+            >
+              <div className="aspect-square w-full overflow-hidden">
                 <img
                   src={t.photo}
                   alt={`Photo of ${t.name}`}
                   loading="lazy"
-                  className="h-10 w-10 shrink-0 rounded-full object-cover object-[50%_35%] md:h-11 md:w-11"
+                  className="h-full w-full object-cover"
+                  style={{ objectPosition: t.pos ?? "50% 35%" }}
                 />
-                <span className="min-w-0">
-                  <span className="block truncate text-sm font-semibold md:text-base">
-                    {t.name}
-                  </span>
-                  <span className="block truncate text-xs text-muted-foreground md:text-sm">
-                    {t.detail}
-                  </span>
-                </span>
-                <span className="col-span-2 shrink-0 text-xs tracking-[0.3em] text-accent sm:col-span-1 sm:ml-auto sm:text-sm">
-                  ★★★★★
-                </span>
-              </figcaption>
-
-              <div className="mt-6 flex items-center gap-3">
-                <div className="flex flex-1 gap-1.5" role="tablist" aria-label="Testimonials">
-                  {TESTIMONIALS.map((item, i) => (
-                    <button
-                      key={item.name}
-                      type="button"
-                      role="tab"
-                      aria-selected={i === active}
-                      aria-label={`Show testimonial from ${item.name}`}
-                      onClick={() => setActive(i)}
-                      className={`h-1.5 flex-1 rounded-full transition-colors duration-500 ${
-                        i === active ? "bg-primary" : "bg-border"
-                      }`}
-                    />
-                  ))}
-                </div>
-                <button
-                  type="button"
-                  onClick={() => setActive((i) => (i - 1 + total) % total)}
-                  aria-label="Previous testimonial"
-                  className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-border transition-colors hover:border-primary hover:text-primary"
-                >
-                  <ChevronLeft className="h-4 w-4" />
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setActive((i) => (i + 1) % total)}
-                  aria-label="Next testimonial"
-                  className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-border transition-colors hover:border-primary hover:text-primary"
-                >
-                  <ChevronRight className="h-4 w-4" />
-                </button>
               </div>
-            </figure>
-          </Reveal>
-
-          <Reveal delay={0.1}>
-            <ul className="hidden h-full flex-col gap-2 lg:flex">
-              {TESTIMONIALS.map((item, i) => (
-                <li key={item.name}>
-                  <button
-                    type="button"
-                    onClick={() => setActive(i)}
-                    aria-pressed={i === active}
-                    className={`flex w-full items-center gap-3 rounded-2xl border px-4 py-3 text-left transition-all duration-500 ease-[var(--ease-swim)] ${
-                      i === active
-                        ? "translate-x-1 border-primary bg-[color-mix(in_oklab,var(--primary)_8%,transparent)]"
-                        : "border-border hover:translate-x-1 hover:border-primary/50"
-                    }`}
-                  >
-                    <img
-                      src={item.photo}
-                      alt=""
-                      loading="lazy"
-                      className="h-9 w-9 shrink-0 rounded-full object-cover object-[50%_35%]"
-                    />
-                    <span className="min-w-0">
-                      <span className="block truncate text-sm font-semibold">{item.name}</span>
-                      <span className="block truncate text-xs text-muted-foreground">
-                        {item.detail}
-                      </span>
-                    </span>
-                  </button>
-                </li>
-              ))}
-
-            </ul>
-          </Reveal>
-        </div>
-      </div>
+              <div className="flex flex-1 flex-col p-5">
+                <Quote className="h-4 w-4 shrink-0 text-primary/70" aria-hidden="true" />
+                <p className="mt-2 line-clamp-6 min-h-[8.5rem] text-sm leading-relaxed text-muted-foreground">
+                  {t.quote}
+                </p>
+                <div className="mt-auto border-t border-border pt-3">
+                  <span className="block truncate text-sm font-semibold">{t.name}</span>
+                  <span className="block truncate text-xs text-muted-foreground">{t.detail}</span>
+                </div>
+              </div>
+            </article>
+          ))}
+        </Marquee>
+      </Reveal>
     </section>
   );
 }
