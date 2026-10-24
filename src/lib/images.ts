@@ -152,34 +152,6 @@ export const REAL_SHOTS: Shot[] = [
     src: PHOTOS.babyClass,
     alt: "Parents and toddlers on the pool edge during a Sportiqo parent-child group class",
   },
-  {
-    src: PHOTOS.toddlerLesson,
-    alt: "A Sportiqo coach guiding a toddler through a first lesson under the Sportiqo-branded pool banner",
-  },
-  {
-    src: PHOTOS.awardLadySwimmer,
-    alt: "A Sportiqo swimmer receiving her Torpya Gold Level certificate from her coach at the poolside",
-  },
-  {
-    src: PHOTOS.awardBoysGroup,
-    alt: "Three proud Sportiqo swimmers with their coach holding their level certificates at the pool edge",
-  },
-  {
-    src: PHOTOS.awardToddlerGirl,
-    alt: "A young Sportiqo swimmer in pink goggles receiving her Torpya Gold Level certificate from her coach",
-  },
-  {
-    src: PHOTOS.awardKidsTrio,
-    alt: "Three Sportiqo kids posing with their Speedy Gold Level certificates alongside their coach",
-  },
-  {
-    src: PHOTOS.awardLadiesBatch,
-    alt: "A Sportiqo coach presenting a Torpya Gold Level certificate to a swimmer from the ladies batch",
-  },
-  {
-    src: PHOTOS.awardAdultPair,
-    alt: "Two adult Sportiqo swimmers holding their Dynamite Gold Level certificate at the outdoor pool",
-  },
 ];
 
 export const GALLERY: Shot[] = [
