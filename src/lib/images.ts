@@ -192,7 +192,12 @@ export const GALLERY: Shot[] = [
  * twice at the same moment. Rows are also strided so neighbouring rows never
  * scroll the same subject side by side.
  */
-export function buildShotRows(rows: number, perRow: number, pool: Shot[] = GALLERY): Shot[][] {
+export function buildShotRows(
+  rows: number,
+  perRow: number,
+  pool: Shot[] = GALLERY,
+  priority = 0,
+): Shot[][] {
   const n = pool.length;
   const slots = rows * perRow;
   const gcd = (a: number, b: number): number => (b === 0 ? a : gcd(b, a % b));
@@ -206,15 +211,22 @@ export function buildShotRows(rows: number, perRow: number, pool: Shot[] = GALLE
     );
   }
 
-  // Fewer slots than photographs: sample evenly across the whole pool so every
-  // new photo gets a slot and no shot repeats within the row set.
+  // Fewer slots than photographs: the leading pool entries (the newest shots)
+  // always get a slot, the rest are sampled evenly so nothing repeats.
   const used = new Set<number>();
   const picked: Shot[] = [];
-  for (let i = 0; i < slots; i += 1) {
-    let idx = Math.round((i * n) / slots) % n;
+  const take = (idx: number) => {
     while (used.has(idx)) idx = (idx + 1) % n;
     used.add(idx);
     picked.push(order[idx]);
+  };
+
+  const lead = Math.min(priority, slots);
+  for (let i = 0; i < lead; i += 1) {
+    take(order.findIndex((s) => s === pool[i]));
+  }
+  for (let i = lead; i < slots; i += 1) {
+    take(Math.round((i * n) / slots) % n);
   }
 
   return Array.from({ length: rows }, (_, r) =>
