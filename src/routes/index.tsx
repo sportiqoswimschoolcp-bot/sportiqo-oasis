@@ -324,7 +324,7 @@ function WhySportiqo() {
 }
 
 function ImageWall() {
-  const shotRows = buildShotRows(3, 5, GALLERY);
+  const shotRows = buildShotRows(3, 5, GALLERY, 7);
   const rows = [
     { shots: shotRows[0], duration: 52, reverse: false },
     { shots: shotRows[1], duration: 64, reverse: true },

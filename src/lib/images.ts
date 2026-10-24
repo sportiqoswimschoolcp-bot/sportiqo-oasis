@@ -18,6 +18,13 @@ import sportiqoIndoorPool from "@/assets/sportiqo-indoor-pool.webp.asset.json";
 import sportiqoCoachLesson from "@/assets/sportiqo-coach-lesson.webp.asset.json";
 import sportiqoAdultsIndoor from "@/assets/sportiqo-adults-indoor.jpg.asset.json";
 import sportiqoAthletesAwards from "@/assets/sportiqo-athletes-awards.jpg.asset.json";
+import poolToddlerLesson from "@/assets/pool-toddler-lesson.jpg.asset.json";
+import awardLadySwimmer from "@/assets/award-lady-swimmer.jpg.asset.json";
+import awardBoysGroup from "@/assets/award-boys-group.jpg.asset.json";
+import awardToddlerGirl from "@/assets/award-toddler-girl.jpg.asset.json";
+import awardKidsTrio from "@/assets/award-kids-trio.jpg.asset.json";
+import awardLadiesBatch from "@/assets/award-ladies-batch.jpg.asset.json";
+import awardAdultPair from "@/assets/award-adult-pair.jpg.asset.json";
 import testimonialSinghPreet from "@/assets/testimonial-singh-preet.jpg.asset.json";
 import testimonialParentToddler from "@/assets/testimonial-parent-toddler.jpg.asset.json";
 import testimonialKidBackstroke from "@/assets/testimonial-kid-backstroke.jpg.asset.json";
@@ -47,6 +54,13 @@ export const PHOTOS = {
   coachLesson: sportiqoCoachLesson.url,
   adultsIndoor: sportiqoAdultsIndoor.url,
   athletesAwards: sportiqoAthletesAwards.url,
+  toddlerLesson: poolToddlerLesson.url,
+  awardLadySwimmer: awardLadySwimmer.url,
+  awardBoysGroup: awardBoysGroup.url,
+  awardToddlerGirl: awardToddlerGirl.url,
+  awardKidsTrio: awardKidsTrio.url,
+  awardLadiesBatch: awardLadiesBatch.url,
+  awardAdultPair: awardAdultPair.url,
 };
 
 
@@ -66,6 +80,34 @@ export type Shot = { src: string; alt: string };
 
 /** Real photographs — these lead every visual wall. */
 export const REAL_SHOTS: Shot[] = [
+  {
+    src: PHOTOS.toddlerLesson,
+    alt: "A Sportiqo coach guiding a toddler through a first lesson under the Sportiqo-branded pool banner",
+  },
+  {
+    src: PHOTOS.awardLadySwimmer,
+    alt: "A Sportiqo swimmer receiving her Torpya Gold Level certificate from her coach at the poolside",
+  },
+  {
+    src: PHOTOS.awardBoysGroup,
+    alt: "Three proud Sportiqo swimmers with their coach holding their level certificates at the pool edge",
+  },
+  {
+    src: PHOTOS.awardToddlerGirl,
+    alt: "A young Sportiqo swimmer in pink goggles receiving her Torpya Gold Level certificate from her coach",
+  },
+  {
+    src: PHOTOS.awardKidsTrio,
+    alt: "Three Sportiqo kids posing with their Speedy Gold Level certificates alongside their coach",
+  },
+  {
+    src: PHOTOS.awardLadiesBatch,
+    alt: "A Sportiqo coach presenting a Torpya Gold Level certificate to a swimmer from the ladies batch",
+  },
+  {
+    src: PHOTOS.awardAdultPair,
+    alt: "Two adult Sportiqo swimmers holding their Dynamite Gold Level certificate at the outdoor pool",
+  },
   {
     src: PHOTOS.prabhadeviPool,
     alt: "Sportiqo's covered eight-lane swimming pool at Prabhadevi, Mumbai with starting blocks and clear blue water",
@@ -150,18 +192,46 @@ export const GALLERY: Shot[] = [
  * twice at the same moment. Rows are also strided so neighbouring rows never
  * scroll the same subject side by side.
  */
-export function buildShotRows(rows: number, perRow: number, pool: Shot[] = GALLERY): Shot[][] {
+export function buildShotRows(
+  rows: number,
+  perRow: number,
+  pool: Shot[] = GALLERY,
+  priority = 0,
+): Shot[][] {
   const n = pool.length;
+  const slots = rows * perRow;
   const gcd = (a: number, b: number): number => (b === 0 ? a : gcd(b, a % b));
   let step = 7;
   while (step > 1 && gcd(step, n) !== 1) step -= 1;
   const order = Array.from({ length: n }, (_, i) => pool[(i * step + 3) % n]);
 
+  if (slots >= n) {
+    return Array.from({ length: rows }, (_, r) =>
+      Array.from({ length: perRow }, (_, c) => order[(r * perRow + c) % n]),
+    );
+  }
+
+  // Fewer slots than photographs: the leading pool entries (the newest shots)
+  // always get a slot, the rest are sampled evenly so nothing repeats.
+  const used = new Set<number>();
+  const picked: Shot[] = [];
+  const take = (idx: number) => {
+    while (used.has(idx)) idx = (idx + 1) % n;
+    used.add(idx);
+    picked.push(order[idx]);
+  };
+
+  const lead = Math.min(priority, slots);
+  for (let i = 0; i < lead; i += 1) {
+    take(order.findIndex((s) => s === pool[i]));
+  }
+  for (let i = lead; i < slots; i += 1) {
+    take(Math.round((i * n) / slots) % n);
+  }
 
   return Array.from({ length: rows }, (_, r) =>
-    Array.from({ length: perRow }, (_, c) => order[(r * perRow + c) % n]),
+    picked.slice(r * perRow, (r + 1) * perRow),
   );
-
 }
 
 /** Faces behind the real testimonials on the homepage. */
