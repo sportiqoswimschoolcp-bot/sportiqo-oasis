@@ -194,16 +194,32 @@ export const GALLERY: Shot[] = [
  */
 export function buildShotRows(rows: number, perRow: number, pool: Shot[] = GALLERY): Shot[][] {
   const n = pool.length;
+  const slots = rows * perRow;
   const gcd = (a: number, b: number): number => (b === 0 ? a : gcd(b, a % b));
   let step = 7;
   while (step > 1 && gcd(step, n) !== 1) step -= 1;
   const order = Array.from({ length: n }, (_, i) => pool[(i * step + 3) % n]);
 
+  if (slots >= n) {
+    return Array.from({ length: rows }, (_, r) =>
+      Array.from({ length: perRow }, (_, c) => order[(r * perRow + c) % n]),
+    );
+  }
+
+  // Fewer slots than photographs: sample evenly across the whole pool so every
+  // new photo gets a slot and no shot repeats within the row set.
+  const used = new Set<number>();
+  const picked: Shot[] = [];
+  for (let i = 0; i < slots; i += 1) {
+    let idx = Math.round((i * n) / slots) % n;
+    while (used.has(idx)) idx = (idx + 1) % n;
+    used.add(idx);
+    picked.push(order[idx]);
+  }
 
   return Array.from({ length: rows }, (_, r) =>
-    Array.from({ length: perRow }, (_, c) => order[(r * perRow + c) % n]),
+    picked.slice(r * perRow, (r + 1) * perRow),
   );
-
 }
 
 /** Faces behind the real testimonials on the homepage. */
