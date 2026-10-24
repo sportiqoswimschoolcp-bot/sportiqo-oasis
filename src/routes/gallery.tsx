@@ -48,6 +48,7 @@ function Gallery() {
                   decoding="async"
                   width={1200}
                   height={800}
+                  style={{ objectPosition: shot.pos ?? "50% 50%" }}
                   className={`w-full object-cover transition-transform duration-[1.2s] ease-[var(--ease-swim)] hover:scale-105 ${
                     i % 3 === 1 ? "aspect-[4/5]" : "aspect-[4/3]"
                   }`}
