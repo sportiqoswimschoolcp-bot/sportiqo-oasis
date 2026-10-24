@@ -76,17 +76,19 @@ export const IMAGES = {
   ...PHOTOS,
 };
 
-export type Shot = { src: string; alt: string };
+export type Shot = { src: string; alt: string; pos?: string };
 
 /** Real photographs — these lead every visual wall. */
 export const REAL_SHOTS: Shot[] = [
   {
     src: PHOTOS.toddlerLesson,
     alt: "A Sportiqo coach guiding a toddler through a first lesson under the Sportiqo-branded pool banner",
+    pos: "50% 52%",
   },
   {
     src: PHOTOS.awardLadySwimmer,
     alt: "A Sportiqo swimmer receiving her Torpya Gold Level certificate from her coach at the poolside",
+    pos: "50% 30%",
   },
   {
     src: PHOTOS.awardBoysGroup,
@@ -95,18 +97,22 @@ export const REAL_SHOTS: Shot[] = [
   {
     src: PHOTOS.awardToddlerGirl,
     alt: "A young Sportiqo swimmer in pink goggles receiving her Torpya Gold Level certificate from her coach",
+    pos: "50% 46%",
   },
   {
     src: PHOTOS.awardKidsTrio,
     alt: "Three Sportiqo kids posing with their Speedy Gold Level certificates alongside their coach",
+    pos: "50% 36%",
   },
   {
     src: PHOTOS.awardLadiesBatch,
     alt: "A Sportiqo coach presenting a Torpya Gold Level certificate to a swimmer from the ladies batch",
+    pos: "50% 22%",
   },
   {
     src: PHOTOS.awardAdultPair,
     alt: "Two adult Sportiqo swimmers holding their Dynamite Gold Level certificate at the outdoor pool",
+    pos: "50% 30%",
   },
   {
     src: PHOTOS.prabhadeviPool,

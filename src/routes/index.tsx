@@ -357,6 +357,7 @@ function ImageWall() {
                   decoding="async"
                   width={1200}
                   height={800}
+                  style={{ objectPosition: shot.pos ?? "50% 50%" }}
                   className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
                 />
               </figure>
