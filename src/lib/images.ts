@@ -18,6 +18,13 @@ import sportiqoIndoorPool from "@/assets/sportiqo-indoor-pool.webp.asset.json";
 import sportiqoCoachLesson from "@/assets/sportiqo-coach-lesson.webp.asset.json";
 import sportiqoAdultsIndoor from "@/assets/sportiqo-adults-indoor.jpg.asset.json";
 import sportiqoAthletesAwards from "@/assets/sportiqo-athletes-awards.jpg.asset.json";
+import poolToddlerLesson from "@/assets/pool-toddler-lesson.jpg.asset.json";
+import awardLadySwimmer from "@/assets/award-lady-swimmer.jpg.asset.json";
+import awardBoysGroup from "@/assets/award-boys-group.jpg.asset.json";
+import awardToddlerGirl from "@/assets/award-toddler-girl.jpg.asset.json";
+import awardKidsTrio from "@/assets/award-kids-trio.jpg.asset.json";
+import awardLadiesBatch from "@/assets/award-ladies-batch.jpg.asset.json";
+import awardAdultPair from "@/assets/award-adult-pair.jpg.asset.json";
 import testimonialSinghPreet from "@/assets/testimonial-singh-preet.jpg.asset.json";
 import testimonialParentToddler from "@/assets/testimonial-parent-toddler.jpg.asset.json";
 import testimonialKidBackstroke from "@/assets/testimonial-kid-backstroke.jpg.asset.json";
@@ -47,6 +54,13 @@ export const PHOTOS = {
   coachLesson: sportiqoCoachLesson.url,
   adultsIndoor: sportiqoAdultsIndoor.url,
   athletesAwards: sportiqoAthletesAwards.url,
+  toddlerLesson: poolToddlerLesson.url,
+  awardLadySwimmer: awardLadySwimmer.url,
+  awardBoysGroup: awardBoysGroup.url,
+  awardToddlerGirl: awardToddlerGirl.url,
+  awardKidsTrio: awardKidsTrio.url,
+  awardLadiesBatch: awardLadiesBatch.url,
+  awardAdultPair: awardAdultPair.url,
 };
 
 
@@ -137,6 +151,34 @@ export const REAL_SHOTS: Shot[] = [
   {
     src: PHOTOS.babyClass,
     alt: "Parents and toddlers on the pool edge during a Sportiqo parent-child group class",
+  },
+  {
+    src: PHOTOS.toddlerLesson,
+    alt: "A Sportiqo coach guiding a toddler through a first lesson under the Sportiqo-branded pool banner",
+  },
+  {
+    src: PHOTOS.awardLadySwimmer,
+    alt: "A Sportiqo swimmer receiving her Torpya Gold Level certificate from her coach at the poolside",
+  },
+  {
+    src: PHOTOS.awardBoysGroup,
+    alt: "Three proud Sportiqo swimmers with their coach holding their level certificates at the pool edge",
+  },
+  {
+    src: PHOTOS.awardToddlerGirl,
+    alt: "A young Sportiqo swimmer in pink goggles receiving her Torpya Gold Level certificate from her coach",
+  },
+  {
+    src: PHOTOS.awardKidsTrio,
+    alt: "Three Sportiqo kids posing with their Speedy Gold Level certificates alongside their coach",
+  },
+  {
+    src: PHOTOS.awardLadiesBatch,
+    alt: "A Sportiqo coach presenting a Torpya Gold Level certificate to a swimmer from the ladies batch",
+  },
+  {
+    src: PHOTOS.awardAdultPair,
+    alt: "Two adult Sportiqo swimmers holding their Dynamite Gold Level certificate at the outdoor pool",
   },
 ];
 
